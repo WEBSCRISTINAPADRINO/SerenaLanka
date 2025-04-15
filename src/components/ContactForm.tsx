@@ -1,5 +1,3 @@
-'use client';
-
 import { useState } from 'react';
 
 interface FormData {
@@ -9,76 +7,103 @@ interface FormData {
   mensaje: string;
 }
 
-export default function ContactForm() {
+const ContactForm = () => {
   const [formData, setFormData] = useState<FormData>({
     nombre: '',
     email: '',
     asunto: '',
-    mensaje: '',
+    mensaje: ''
   });
 
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errors, setErrors] = useState<Partial<FormData>>({});
+  const [enviando, setEnviando] = useState(false);
+  const [mensajeEstado, setMensajeEstado] = useState('');
 
-  const validateForm = (): boolean => {
-    const newErrors: Partial<FormData> = {};
+  const validarEmail = (email: string) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+
+  const validarFormulario = () => {
+    const nuevosErrores: Partial<FormData> = {};
 
     if (!formData.nombre.trim()) {
-      newErrors.nombre = 'El nombre es requerido';
+      nuevosErrores.nombre = 'El nombre es requerido';
     }
-
     if (!formData.email.trim()) {
-      newErrors.email = 'El email es requerido';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Por favor, ingresa un email válido';
+      nuevosErrores.email = 'El email es requerido';
+    } else if (!validarEmail(formData.email)) {
+      nuevosErrores.email = 'Email inválido';
     }
-
     if (!formData.asunto.trim()) {
-      newErrors.asunto = 'El asunto es requerido';
+      nuevosErrores.asunto = 'El asunto es requerido';
     }
-
     if (!formData.mensaje.trim()) {
-      newErrors.mensaje = 'El mensaje es requerido';
+      nuevosErrores.mensaje = 'El mensaje es requerido';
     }
 
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    setErrors(nuevosErrores);
+    return Object.keys(nuevosErrores).length === 0;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!validarFormulario()) {
+      return;
+    }
 
-    if (!validateForm()) return;
-
-    setStatus('loading');
+    setEnviando(true);
+    setMensajeEstado('');
 
     try {
-      // Aquí iría la lógica para enviar el formulario a tu backend
-      await new Promise(resolve => setTimeout(resolve, 1000)); // Simulación de envío
-      setStatus('success');
-      setFormData({ nombre: '', email: '', asunto: '', mensaje: '' });
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setMensajeEstado('¡Mensaje enviado con éxito!');
+        setFormData({
+          nombre: '',
+          email: '',
+          asunto: '',
+          mensaje: ''
+        });
+      } else {
+        throw new Error(data.message || 'Error al enviar el mensaje');
+      }
     } catch (error) {
-      setStatus('error');
+      setMensajeEstado('Error al enviar el mensaje. Por favor, inténtalo de nuevo.');
+    } finally {
+      setEnviando(false);
     }
   };
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
     // Limpiar error del campo cuando el usuario empieza a escribir
     if (errors[name as keyof FormData]) {
-      setErrors(prev => ({ ...prev, [name]: '' }));
+      setErrors(prev => ({
+        ...prev,
+        [name]: ''
+      }));
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      {/* Nombre */}
-      <div>
-        <label htmlFor="nombre" className="block text-sm font-medium text-elephant-gray">
-          Nombre completo
+    <form onSubmit={handleSubmit} className="max-w-lg mx-auto p-6 bg-white rounded-lg shadow-md">
+      <div className="mb-4">
+        <label htmlFor="nombre" className="block text-gray-700 font-medium mb-2">
+          Nombre
         </label>
         <input
           type="text"
@@ -86,18 +111,15 @@ export default function ContactForm() {
           name="nombre"
           value={formData.nombre}
           onChange={handleChange}
-          className={`mt-1 block w-full rounded-lg border ${
-            errors.nombre ? 'border-spice-red' : 'border-elephant-gray/20'
-          } bg-coconut-white px-4 py-3 text-elephant-gray shadow-sm focus:border-tropical-green focus:outline-none focus:ring-1 focus:ring-tropical-green`}
+          className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 ${
+            errors.nombre ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-blue-200'
+          }`}
         />
-        {errors.nombre && (
-          <p className="mt-1 text-sm text-spice-red">{errors.nombre}</p>
-        )}
+        {errors.nombre && <p className="text-red-500 text-sm mt-1">{errors.nombre}</p>}
       </div>
 
-      {/* Email */}
-      <div>
-        <label htmlFor="email" className="block text-sm font-medium text-elephant-gray">
+      <div className="mb-4">
+        <label htmlFor="email" className="block text-gray-700 font-medium mb-2">
           Email
         </label>
         <input
@@ -106,18 +128,15 @@ export default function ContactForm() {
           name="email"
           value={formData.email}
           onChange={handleChange}
-          className={`mt-1 block w-full rounded-lg border ${
-            errors.email ? 'border-spice-red' : 'border-elephant-gray/20'
-          } bg-coconut-white px-4 py-3 text-elephant-gray shadow-sm focus:border-tropical-green focus:outline-none focus:ring-1 focus:ring-tropical-green`}
+          className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 ${
+            errors.email ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-blue-200'
+          }`}
         />
-        {errors.email && (
-          <p className="mt-1 text-sm text-spice-red">{errors.email}</p>
-        )}
+        {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
       </div>
 
-      {/* Asunto */}
-      <div>
-        <label htmlFor="asunto" className="block text-sm font-medium text-elephant-gray">
+      <div className="mb-4">
+        <label htmlFor="asunto" className="block text-gray-700 font-medium mb-2">
           Asunto
         </label>
         <select
@@ -125,24 +144,21 @@ export default function ContactForm() {
           name="asunto"
           value={formData.asunto}
           onChange={handleChange}
-          className={`mt-1 block w-full rounded-lg border ${
-            errors.asunto ? 'border-spice-red' : 'border-elephant-gray/20'
-          } bg-coconut-white px-4 py-3 text-elephant-gray shadow-sm focus:border-tropical-green focus:outline-none focus:ring-1 focus:ring-tropical-green`}
+          className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 ${
+            errors.asunto ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-blue-200'
+          }`}
         >
           <option value="">Selecciona un asunto</option>
           <option value="consulta">Consulta general</option>
-          <option value="reserva">Reserva de experiencias</option>
-          <option value="colaboracion">Propuesta de colaboración</option>
+          <option value="reserva">Información de reservas</option>
+          <option value="sugerencia">Sugerencia</option>
           <option value="otro">Otro</option>
         </select>
-        {errors.asunto && (
-          <p className="mt-1 text-sm text-spice-red">{errors.asunto}</p>
-        )}
+        {errors.asunto && <p className="text-red-500 text-sm mt-1">{errors.asunto}</p>}
       </div>
 
-      {/* Mensaje */}
-      <div>
-        <label htmlFor="mensaje" className="block text-sm font-medium text-elephant-gray">
+      <div className="mb-6">
+        <label htmlFor="mensaje" className="block text-gray-700 font-medium mb-2">
           Mensaje
         </label>
         <textarea
@@ -151,38 +167,34 @@ export default function ContactForm() {
           value={formData.mensaje}
           onChange={handleChange}
           rows={4}
-          className={`mt-1 block w-full rounded-lg border ${
-            errors.mensaje ? 'border-spice-red' : 'border-elephant-gray/20'
-          } bg-coconut-white px-4 py-3 text-elephant-gray shadow-sm focus:border-tropical-green focus:outline-none focus:ring-1 focus:ring-tropical-green`}
+          className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 ${
+            errors.mensaje ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-blue-200'
+          }`}
         />
-        {errors.mensaje && (
-          <p className="mt-1 text-sm text-spice-red">{errors.mensaje}</p>
-        )}
+        {errors.mensaje && <p className="text-red-500 text-sm mt-1">{errors.mensaje}</p>}
       </div>
 
-      {/* Botón de envío */}
-      <div>
-        <button
-          type="submit"
-          disabled={status === 'loading'}
-          className="w-full rounded-full bg-tropical-green px-6 py-3 font-semibold text-coconut-white transition-colors hover:bg-tropical-green/90 disabled:opacity-50"
-        >
-          {status === 'loading' ? 'Enviando...' : 'Enviar mensaje'}
-        </button>
-      </div>
-
-      {/* Mensajes de estado */}
-      {status === 'success' && (
-        <div className="rounded-lg bg-tropical-green/10 p-4 text-center text-tropical-green">
-          ¡Gracias por tu mensaje! Nos pondremos en contacto contigo pronto.
+      {mensajeEstado && (
+        <div className={`mb-4 p-3 rounded-lg ${
+          mensajeEstado.includes('éxito') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
+        }`}>
+          {mensajeEstado}
         </div>
       )}
 
-      {status === 'error' && (
-        <div className="rounded-lg bg-spice-red/10 p-4 text-center text-spice-red">
-          Hubo un error al enviar tu mensaje. Por favor, intenta nuevamente.
-        </div>
-      )}
+      <button
+        type="submit"
+        disabled={enviando}
+        className={`w-full py-2 px-4 rounded-lg text-white font-medium transition-colors ${
+          enviando
+            ? 'bg-gray-400 cursor-not-allowed'
+            : 'bg-tropical-green hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2'
+        }`}
+      >
+        {enviando ? 'Enviando...' : 'Enviar mensaje'}
+      </button>
     </form>
   );
-} 
+};
+
+export default ContactForm; 
