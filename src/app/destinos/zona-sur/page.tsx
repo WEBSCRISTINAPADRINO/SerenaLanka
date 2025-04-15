@@ -59,44 +59,44 @@ const natureExperiences = [
   {
     id: 'yala-safari',
     name: 'Safari en Yala',
-    description: 'Explora el Parque Nacional de Yala, hogar de leopardos, elefantes, cocodrilos y una rica biodiversidad. Una de las mejores experiencias de safari en Asia.',
-    image: '/images/experiencias/yala-safari.jpg',
+    description: 'Explora el Parque Nacional de Yala, hogar de leopardos, elefantes, cocodrilos y una rica biodiversidad.',
+    image: 'https://images.unsplash.com/photo-1577724513556-7ce8c0c0c610?auto=format&fit=crop&q=80',
     duration: '1 día',
     bestTime: 'Febrero a Julio',
-    highlights: ['Avistamiento de leopardos', 'Observación de elefantes', 'Cocodrilos en lagunas', 'Paisajes salvajes', 'Observación de aves'],
+    highlights: ['Avistamiento de leopardos', 'Observación de elefantes', 'Cocodrilos en lagunas'],
     affiliateLink: 'https://www.getyourguide.com/yala-national-park-l97595/',
     affiliatePlatform: 'GetYourGuide'
   },
   {
     id: 'tortugas-rekawa',
     name: 'Tortugas en Rekawa',
-    description: 'Visita la playa de Rekawa para ver tortugas marinas desovando en su hábitat natural. Una experiencia única de conservación marina.',
-    image: '/images/experiencias/tortugas-rekawa.jpg',
+    description: 'Visita la playa de Rekawa para ver tortugas marinas desovando en su hábitat natural.',
+    image: 'https://images.unsplash.com/photo-1591025207163-942350e47db2?auto=format&fit=crop&q=80',
     duration: '1 noche',
     bestTime: 'Noviembre a Marzo',
-    highlights: ['Tortugas verdes', 'Tortugas laúd', 'Conservación marina', 'Fotografía nocturna', 'Guía local especializado'],
+    highlights: ['Tortugas verdes', 'Tortugas laúd', 'Conservación marina'],
     affiliateLink: 'https://www.viator.com/Tangalle-attractions/Rekawa-Turtle-Watch/d5028-a12345',
     affiliatePlatform: 'Viator'
   },
   {
     id: 'cultura-local',
     name: 'Experiencia Cultural Local',
-    description: 'Sumérgete en la cultura local con familias cingalesas y aprende sobre sus tradiciones, cocina y artesanía.',
-    image: '/images/experiencias/cultura-local.jpg',
+    description: 'Sumérgete en la cultura local con familias cingalesas.',
+    image: 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&q=80',
     duration: '1 día',
     bestTime: 'Todo el año',
-    highlights: ['Cocina local', 'Artesanía', 'Música tradicional', 'Ceremonias budistas', 'Interacción con familias locales'],
+    highlights: ['Cocina local', 'Artesanía', 'Música tradicional'],
     affiliateLink: 'https://www.airbnb.es/experiences/123456',
     affiliatePlatform: 'Airbnb Experiences'
   },
   {
     id: 'ballenas-mirissa',
     name: 'Avistamiento de Ballenas en Mirissa',
-    description: 'Embárcate en una aventura para ver ballenas azules, jorobadas y delfines en su hábitat natural frente a las costas de Mirissa.',
-    image: '/images/experiencias/ballenas-mirissa.jpg',
+    description: 'Embárcate en una aventura para ver ballenas azules y delfines.',
+    image: 'https://images.unsplash.com/photo-1568430462989-44163eb1b109?auto=format&fit=crop&q=80',
     duration: '1 día',
     bestTime: 'Diciembre a Abril',
-    highlights: ['Ballenas azules', 'Ballenas jorobadas', 'Delfines', 'Fotografía marina', 'Guía especializado'],
+    highlights: ['Ballenas azules', 'Ballenas jorobadas', 'Delfines'],
     affiliateLink: 'https://www.getyourguide.com/mirissa-l97595/whale-watching-tours-tc24/',
     affiliatePlatform: 'GetYourGuide'
   },
@@ -152,7 +152,7 @@ export default function ZonaSurPage() {
       {/* Hero Section */}
       <section className="relative h-[60vh] w-full">
         <Image
-          src="/images/destinations/south-coast.jpg"
+          src="https://images.unsplash.com/photo-1578662996442-48f1f1e5b89f?auto=format&fit=crop&q=80"
           alt="Zona Sur de Sri Lanka"
           fill
           className="object-cover"
