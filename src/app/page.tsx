@@ -1,23 +1,18 @@
-import { Metadata } from 'next';
-import HomePage from '@/components/HomePage';
-
-export const metadata: Metadata = {
-  title: 'Sri Lanka Luxury Travel - Experiencias de Lujo Accesible',
-  description: 'Descubre Sri Lanka a través de experiencias de lujo auténtico a precios accesibles. Safaris, retiros de yoga, playas paradisíacas y cultura milenaria.',
-  keywords: 'Sri Lanka, lujo accesible, viajes de lujo, experiencias únicas, safari, yoga, playas, cultura, bienestar',
-  openGraph: {
-    title: 'Sri Lanka Luxury Travel - Experiencias de Lujo Accesible',
-    description: 'Descubre Sri Lanka a través de experiencias de lujo auténtico a precios accesibles.',
-    images: ['/images/og-image.jpg'],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Sri Lanka Luxury Travel',
-    description: 'Experiencias de lujo auténtico a precios accesibles en Sri Lanka',
-    images: ['/images/twitter-image.jpg'],
-  }
-};
-
-export default function Page() {
-  return <HomePage />;
+export default function Home() {
+  return (
+    <main className="min-h-screen flex flex-col items-center justify-center p-8">
+      <h1 className="text-4xl font-bold mb-4 text-center">
+        Bienvenido a Serena Lanka
+      </h1>
+      <p className="text-xl text-center max-w-2xl mb-8">
+        Descubre Sri Lanka con experiencias de lujo auténtico a precios accesibles
+      </p>
+      <div className="grid gap-4 text-center">
+        <p>🌴 Playas paradisíacas</p>
+        <p>🐘 Safaris inolvidables</p>
+        <p>🕉️ Templos milenarios</p>
+        <p>🌺 Retiros de bienestar</p>
+      </div>
+    </main>
+  )
 } 
