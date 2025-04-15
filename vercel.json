@@ -22,5 +22,10 @@
         "hostname": "serena-lanka.vercel.app"
       }
     ]
+  },
+  "env": {
+    "NEXT_PUBLIC_SITE_URL": "https://serena-lanka.vercel.app",
+    "NEXT_PUBLIC_VERCEL_URL": "serena-lanka.vercel.app",
+    "NEXT_PUBLIC_VERCEL_ENV": "production"
   }
 } 
