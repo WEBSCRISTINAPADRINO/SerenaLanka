@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "es2018",
+    "module": "commonjs",
+    "lib": ["es2018", "dom"],
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "../dist",
+    "rootDir": ".",
+    "typeRoots": [
+      "./types",
+      "../node_modules/@types",
+      "../src/types"
+    ],
+    "types": ["node", "axios", "sharp"]
+  },
+  "include": [
+    "./**/*.ts",
+    "./types.d.ts",
+    "../src/types/global.d.ts"
+  ],
+  "exclude": ["node_modules"]
+} 

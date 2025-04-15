@@ -1,0 +1,156 @@
+{
+  "general": {
+    "proyecto": "Web de turismo de lujo accesible en Sri Lanka",
+    "lenguaje": "Español",
+    "stack": "Next.js 14 + TypeScript + Tailwind CSS",
+    "objetivo": "Inspirar y guiar a viajeros que buscan experiencias de lujo auténtico a buen precio",
+    "modo": "No técnico / Visual / Intuitivo"
+  },
+  "diseño": {
+    "colores": {
+      "tropical-green": "#2E7D32",
+      "elephant-gray": "#424242",
+      "golden-sand": "#F5DEB3",
+      "ocean-blue": "#1976D2",
+      "sunset-orange": "#FF5722",
+      "lotus-pink": "#E91E63",
+      "spice-red": "#D32F2F",
+      "coconut-white": "#FFFFFF"
+    },
+    "fuentes": {
+      "titulos": "Playfair Display, serif",
+      "texto": "Lato, sans-serif"
+    },
+    "estética": "Lujosa, espiritual, tropical, accesible, moderna"
+  },
+  "estructura": {
+    "menu": [
+      "Inicio",
+      "Destinos",
+      "Experiencias",
+      "Wellness",
+      "Planifica",
+      "Sobre Nosotros"
+    ],
+    "submenus": {
+      "Destinos": [
+        "Costa Sur",
+        "Costa Este",
+        "Montañas",
+        "Templos Budistas",
+        "Ciudades históricas"
+      ],
+      "Experiencias": [
+        "Safari y naturaleza",
+        "Surf y deportes acuáticos",
+        "Avistamiento de ballenas y delfines",
+        "Nado con tortugas y mantarrayas",
+        "Cultura y gastronomía local"
+      ],
+      "Wellness": [
+        "Retiros de yoga",
+        "Masajes y spas ayurvédicos",
+        "Meditación",
+        "Nutrición saludable"
+      ]
+    },
+    "componentes": [
+      "Navbar sticky con submenús",
+      "Hero con imagen de fondo + CTA",
+      "Cards para destinos y experiencias",
+      "Footer con newsletter",
+      "Formulario de contacto simple"
+    ],
+    "responsive": true
+  },
+  "contenido": {
+    "voz": "Aspiracional, cercana, motivadora, clara",
+    "público objetivo": [
+      "Personas que buscan lujo a buen precio",
+      "Viajeros con mentalidad wellness",
+      "Público internacional que busca experiencias únicas"
+    ],
+    "SEO": {
+      "enfasis": "long-tail keywords de Sri Lanka",
+      "estructura": "H1, H2 claros, párrafos cortos, bullets",
+      "idioma": "Español neutro internacional"
+    }
+  },
+  "monetización": {
+    "modelo_gratuito": {
+      "contenido": [
+        "Información general de destinos",
+        "Galerías de fotos",
+        "Consejos básicos de viaje",
+        "Mapas interactivos básicos"
+      ],
+      "apis_gratuitas": [
+        "OpenWeather para clima",
+        "Google Places para información",
+        "Unsplash para imágenes",
+        "Google Maps básico"
+      ]
+    },
+    "modelo_premium": {
+      "contenido": [
+        "Itinerarios personalizados",
+        "Guías detalladas por destino",
+        "Recomendaciones exclusivas de hoteles",
+        "E-books descargables",
+        "Acceso a comunidad exclusiva"
+      ],
+      "características": [
+        "Sistema de membresía",
+        "Contenido descargable",
+        "Recomendaciones personalizadas",
+        "Acceso anticipado a contenido"
+      ]
+    },
+    "afiliados": {
+      "plataformas": [
+        "Booking.com",
+        "Amazon",
+        "GetYourGuide",
+        "Skyscanner",
+        "Agoda"
+      ],
+      "tipos": [
+        "Hoteles y alojamientos",
+        "Productos de viaje",
+        "Experiencias y tours",
+        "Vuelos y transportes"
+      ]
+    }
+  },
+  "automatización": {
+    "generación_contenido": {
+      "herramientas": [
+        "IA para contenido base",
+        "IA para descripciones",
+        "IA para itinerarios",
+        "IA para recomendaciones"
+      ],
+      "actualización": [
+        "Sistema de caché",
+        "Actualización periódica",
+        "Backups automáticos",
+        "Alertas de cambios"
+      ]
+    },
+    "panel_control": {
+      "funciones": [
+        "Dashboard básico",
+        "Estadísticas de conversión",
+        "Gestión de contenido premium",
+        "Control de afiliados"
+      ]
+    }
+  },
+  "restricciones": {
+    "no usar": [
+      "código que afecte a particiones del sistema",
+      "comandos en terminal que borren archivos",
+      "instalaciones automáticas sin confirmación"
+    ]
+  }
+}
