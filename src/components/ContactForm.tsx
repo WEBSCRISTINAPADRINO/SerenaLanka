@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 
 interface FormData {
@@ -7,7 +9,7 @@ interface FormData {
   mensaje: string;
 }
 
-const ContactForm = () => {
+export default function ContactForm() {
   const [formData, setFormData] = useState<FormData>({
     nombre: '',
     email: '',
@@ -19,11 +21,11 @@ const ContactForm = () => {
   const [enviando, setEnviando] = useState(false);
   const [mensajeEstado, setMensajeEstado] = useState('');
 
-  const validarEmail = (email: string) => {
+  const validarEmail = (email: string): boolean => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   };
 
-  const validarFormulario = () => {
+  const validarFormulario = (): boolean => {
     const nuevosErrores: Partial<FormData> = {};
 
     if (!formData.nombre.trim()) {
@@ -45,7 +47,7 @@ const ContactForm = () => {
     return Object.keys(nuevosErrores).length === 0;
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
     if (!validarFormulario()) {
@@ -90,7 +92,6 @@ const ContactForm = () => {
       ...prev,
       [name]: value
     }));
-    // Limpiar error del campo cuando el usuario empieza a escribir
     if (errors[name as keyof FormData]) {
       setErrors(prev => ({
         ...prev,
@@ -195,6 +196,4 @@ const ContactForm = () => {
       </button>
     </form>
   );
-};
-
-export default ContactForm; 
+} 
