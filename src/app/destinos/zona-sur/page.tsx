@@ -11,7 +11,7 @@ const destinations = [
     id: 'galle',
     name: 'Galle',
     description: 'Ciudad histórica con una fortaleza colonial holandesa declarada Patrimonio de la Humanidad.',
-    image: '/images/destinos/zona-sur/galle.jpg',
+    image: 'https://images.unsplash.com/photo-1586867791557-40b415a4dbe1?auto=format&fit=crop&q=80',
     highlights: ['Fortaleza de Galle', 'Faro de Galle', 'Playa de Unawatuna'],
     bestTime: 'Diciembre a Marzo',
     experiences: ['Historia colonial', 'Buceo', 'Cultura local']
@@ -20,7 +20,7 @@ const destinations = [
     id: 'mirissa',
     name: 'Mirissa',
     description: 'Paraíso tropical con una de las mejores playas de Sri Lanka y avistamiento de ballenas.',
-    image: '/images/destinos/zona-sur/mirissa.jpg',
+    image: 'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&q=80',
     highlights: ['Playa de Mirissa', 'Avistamiento de ballenas', 'Coconut Tree Hill'],
     bestTime: 'Diciembre a Abril',
     experiences: ['Avistamiento de ballenas', 'Surf', 'Relax en la playa']
@@ -29,7 +29,7 @@ const destinations = [
     id: 'tangalle',
     name: 'Tangalle',
     description: 'Hermosa ciudad costera con playas vírgenes y lagunas naturales.',
-    image: '/images/destinos/zona-sur/tangalle.jpg',
+    image: 'https://images.unsplash.com/photo-1596895111956-bf1cf0599ce5?auto=format&fit=crop&q=80',
     highlights: ['Playa de Tangalle', 'Laguna de Rekawa', 'Templo budista'],
     bestTime: 'Diciembre a Marzo',
     experiences: ['Tortugas marinas', 'Paseos en barco', 'Cultura local']
@@ -38,7 +38,7 @@ const destinations = [
     id: 'hambantota',
     name: 'Hambantota',
     description: 'Ciudad portuaria moderna con acceso a parques nacionales y playas.',
-    image: '/images/destinos/zona-sur/hambantota.jpg',
+    image: 'https://images.unsplash.com/photo-1590418606746-018840f9cd0f?auto=format&fit=crop&q=80',
     highlights: ['Puerto de Hambantota', 'Parque Nacional Yala', 'Playa de Hambantota'],
     bestTime: 'Diciembre a Marzo',
     experiences: ['Safari', 'Deportes acuáticos', 'Pesca']
@@ -47,7 +47,7 @@ const destinations = [
     id: 'matara',
     name: 'Matara',
     description: 'Ciudad histórica con una rica herencia colonial y hermosas playas.',
-    image: '/images/destinos/zona-sur/matara.jpg',
+    image: 'https://images.unsplash.com/photo-1625736036341-0d1ff419f430?auto=format&fit=crop&q=80',
     highlights: ['Faro de Dondra', 'Fortaleza de Matara', 'Playa de Polhena'],
     bestTime: 'Diciembre a Marzo',
     experiences: ['Historia colonial', 'Snorkeling', 'Cultura local']
