@@ -1,46 +1,26 @@
-import './globals.css';
-import type { Metadata } from 'next';
-import { Playfair_Display, Lato } from 'next/font/google';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
+import './globals.css'
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
 
-const playfair = Playfair_Display({ 
-  subsets: ['latin'],
-  variable: '--font-playfair',
-});
-
-const lato = Lato({ 
-  weight: ['300', '400', '700'],
-  subsets: ['latin'],
-  variable: '--font-lato',
-});
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://serena-lanka.vercel.app'),
-  title: {
-    template: '%s | Sri Lanka Luxury Travel',
-    default: 'Sri Lanka Luxury Travel - Experiencias de lujo auténtico',
+  title: 'Serena Lanka - Turismo de lujo accesible en Sri Lanka',
+  description: 'Descubre Sri Lanka con experiencias de lujo auténtico a precios accesibles. Playas paradisíacas, safaris, templos y más.',
+  openGraph: {
+    title: 'Serena Lanka - Turismo de lujo accesible en Sri Lanka',
+    description: 'Descubre Sri Lanka con experiencias de lujo auténtico a precios accesibles',
+    url: 'https://serena-lanka.vercel.app',
+    siteName: 'Serena Lanka',
+    locale: 'es_ES',
+    type: 'website',
   },
-  description: 'Descubre Sri Lanka a través de experiencias de lujo auténtico. Viajes personalizados, retiros wellness y aventuras exclusivas.',
-  keywords: ['Sri Lanka', 'viajes de lujo', 'experiencias exclusivas', 'turismo de lujo', 'wellness', 'aventuras'],
-};
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <html lang="es" className={`${playfair.variable} ${lato.variable}`}>
-      <body className="font-lato antialiased">
-        <div className="flex flex-col min-h-screen">
-          <Navbar />
-          <main className="flex-grow">
-            {children}
-          </main>
-          <Footer />
-        </div>
-      </body>
-    </html>
-  );
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Serena Lanka - Turismo de lujo accesible en Sri Lanka',
+    description: 'Descubre Sri Lanka con experiencias de lujo auténtico a precios accesibles',
+  },
 } 
