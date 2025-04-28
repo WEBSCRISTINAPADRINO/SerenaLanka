@@ -1,65 +1,36 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import Link from 'next/link';
+import React from 'react';
+import Image from 'next/image';
 
 interface HeroProps {
   title: string;
-  subtitle: string;
-  backgroundImage: string;
-  ctaText: string;
-  ctaLink: string;
-  overlayOpacity?: number;
+  description: string;
+  imageSrc: string;
+  imageAlt: string;
 }
 
-export default function Hero({
-  title,
-  subtitle,
-  backgroundImage,
-  ctaText,
-  ctaLink,
-  overlayOpacity = 0.5
-}: HeroProps) {
+const Hero: React.FC<HeroProps> = ({ title, description, imageSrc, imageAlt }) => {
   return (
-    <div className="relative h-screen">
-      {/* Imagen de fondo */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ 
-          backgroundImage: `url(${backgroundImage})`,
-        }}
+    <section className="relative h-[60vh] w-full">
+      <Image
+        src={imageSrc}
+        alt={imageAlt}
+        fill
+        className="object-cover"
+        priority
+        sizes="100vw"
       />
-      
-      {/* Overlay */}
-      <div 
-        className="absolute inset-0"
-        style={{ 
-          backgroundColor: `rgba(0, 0, 0, ${overlayOpacity})` 
-        }}
-      />
-      
-      {/* Contenido */}
-      <div className="relative h-full flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-4xl"
-        >
-          <h1 className="font-playfair text-4xl sm:text-5xl md:text-6xl text-coconut-white mb-6">
-            {title}
-          </h1>
-          <p className="text-xl sm:text-2xl text-coconut-white/90 mb-10">
-            {subtitle}
-          </p>
-          <Link 
-            href={ctaLink}
-            className="inline-block bg-tropical-green text-coconut-white px-8 py-3 rounded-md font-medium hover:bg-tropical-green/90 transition-colors"
-          >
-            {ctaText}
-          </Link>
-        </motion.div>
+      <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-coconut-white">
+        <h1 className="text-4xl md:text-6xl font-playfair mb-4 text-center px-4">
+          {title}
+        </h1>
+        <p className="text-lg md:text-xl max-w-2xl text-center px-4">
+          {description}
+        </p>
       </div>
-    </div>
+    </section>
   );
-} 
+};
+
+export default Hero; 

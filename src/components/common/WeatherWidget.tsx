@@ -1,114 +1,92 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-
-interface WeatherWidgetProps {
-  location: string;
-  latitude?: number;
-  longitude?: number;
-}
+import React, { useEffect, useState } from 'react';
+import { WiDaySunny, WiRain, WiCloudy, WiThunderstorm } from 'react-icons/wi';
 
 interface WeatherData {
-  temp: number;
-  description: string;
-  icon: string;
+  temperature: number;
+  condition: string;
   humidity: number;
   windSpeed: number;
 }
 
-export default function WeatherWidget({ location, latitude = 6.3833, longitude = 81.4833 }: WeatherWidgetProps) {
+interface WeatherWidgetProps {
+  latitude: number;
+  longitude: number;
+  location: string;
+}
+
+const WeatherWidget: React.FC<WeatherWidgetProps> = ({ latitude, longitude, location }) => {
   const [weather, setWeather] = useState<WeatherData | null>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchWeather = async () => {
       try {
-        setLoading(true);
-        const apiKey = process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY;
         const response = await fetch(
-          `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric&lang=es`
+          `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY}`
         );
-        
-        if (!response.ok) {
-          throw new Error('No se pudo obtener la información del clima');
-        }
-        
         const data = await response.json();
         
         setWeather({
-          temp: Math.round(data.main.temp),
-          description: data.weather[0].description,
-          icon: data.weather[0].icon,
+          temperature: Math.round(data.main.temp),
+          condition: data.weather[0].main,
           humidity: data.main.humidity,
-          windSpeed: Math.round(data.wind.speed * 3.6) // Convertir m/s a km/h
+          windSpeed: Math.round(data.wind.speed)
         });
-        
-        setError(null);
-      } catch (err) {
-        setError('No se pudo cargar la información del clima');
-        console.error('Error al obtener el clima:', err);
+      } catch (error) {
+        console.error('Error fetching weather data:', error);
       } finally {
         setLoading(false);
       }
     };
 
     fetchWeather();
-    
-    // Actualizar cada 30 minutos
-    const interval = setInterval(fetchWeather, 30 * 60 * 1000);
-    
-    return () => clearInterval(interval);
   }, [latitude, longitude]);
+
+  const getWeatherIcon = (condition: string) => {
+    switch (condition.toLowerCase()) {
+      case 'clear':
+        return <WiDaySunny className="w-12 h-12 text-yellow-500" />;
+      case 'rain':
+        return <WiRain className="w-12 h-12 text-blue-500" />;
+      case 'clouds':
+        return <WiCloudy className="w-12 h-12 text-gray-500" />;
+      case 'thunderstorm':
+        return <WiThunderstorm className="w-12 h-12 text-gray-700" />;
+      default:
+        return <WiDaySunny className="w-12 h-12 text-yellow-500" />;
+    }
+  };
 
   if (loading) {
     return (
-      <div className="bg-coconut-white p-4 rounded-lg shadow-md flex items-center justify-center h-24">
-        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-tropical-green"></div>
+      <div className="bg-white rounded-lg shadow-lg p-4 animate-pulse">
+        <div className="h-8 bg-gray-200 rounded w-1/2 mb-4"></div>
+        <div className="h-12 bg-gray-200 rounded mb-4"></div>
+        <div className="h-4 bg-gray-200 rounded w-3/4"></div>
       </div>
     );
   }
 
-  if (error || !weather) {
-    return (
-      <div className="bg-coconut-white p-4 rounded-lg shadow-md">
-        <p className="text-elephant-gray/70 text-center">Información del clima no disponible</p>
-      </div>
-    );
+  if (!weather) {
+    return null;
   }
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="bg-coconut-white p-4 rounded-lg shadow-md"
-    >
-      <div className="flex items-center justify-between mb-2">
-        <h3 className="font-playfair text-lg text-elephant-gray">Clima en {location}</h3>
-        <span className="text-sm text-elephant-gray/60">
-          {new Date().toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })}
-        </span>
+    <div className="bg-white rounded-lg shadow-lg p-6">
+      <h3 className="text-xl font-playfair mb-4">Clima en {location}</h3>
+      <div className="flex items-center justify-between mb-4">
+        {getWeatherIcon(weather.condition)}
+        <span className="text-3xl font-bold">{weather.temperature}°C</span>
       </div>
-      
-      <div className="flex items-center justify-between">
-        <div className="flex items-center">
-          <img
-            src={`https://openweathermap.org/img/wn/${weather.icon}@2x.png`}
-            alt={weather.description}
-            className="w-16 h-16"
-          />
-          <div>
-            <p className="text-2xl font-bold text-elephant-gray">{weather.temp}°C</p>
-            <p className="text-elephant-gray/70 capitalize">{weather.description}</p>
-          </div>
-        </div>
-        
-        <div className="text-right text-sm text-elephant-gray/70">
-          <p>Humedad: {weather.humidity}%</p>
-          <p>Viento: {weather.windSpeed} km/h</p>
-        </div>
+      <div className="space-y-2 text-gray-600">
+        <p>Condición: {weather.condition}</p>
+        <p>Humedad: {weather.humidity}%</p>
+        <p>Viento: {weather.windSpeed} km/h</p>
       </div>
-    </motion.div>
+    </div>
   );
-} 
+};
+
+export default WeatherWidget; 

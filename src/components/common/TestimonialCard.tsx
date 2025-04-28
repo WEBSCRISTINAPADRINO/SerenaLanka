@@ -1,43 +1,66 @@
-import { motion } from 'framer-motion';
-import Image from 'next/image';
+'use client';
 
-export interface TestimonialProps {
+import React from 'react';
+import Image from 'next/image';
+import { FaStar } from 'react-icons/fa';
+
+interface TestimonialCardProps {
   name: string;
   location: string;
-  text: string;
-  image: string;
-  experience?: string;
+  rating: number;
+  comment: string;
+  date: string;
+  imageSrc?: string;
 }
 
-export default function TestimonialCard({ name, location, text, image, experience }: TestimonialProps) {
+const TestimonialCard: React.FC<TestimonialCardProps> = ({
+  name,
+  location,
+  rating,
+  comment,
+  date,
+  imageSrc
+}) => {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
-      className="bg-coconut-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"
-    >
+    <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
       <div className="flex items-center mb-4">
-        <div className="relative w-12 h-12 rounded-full overflow-hidden mr-4">
-          <Image
-            src={image}
-            alt={name}
-            fill
-            className="object-cover"
-          />
+        <div className="relative w-12 h-12 mr-4">
+          {imageSrc ? (
+            <Image
+              src={imageSrc}
+              alt={name}
+              fill
+              className="rounded-full object-cover"
+            />
+          ) : (
+            <div className="w-12 h-12 rounded-full bg-golden-sand flex items-center justify-center">
+              <span className="text-elephant-gray text-xl font-bold">
+                {name.charAt(0)}
+              </span>
+            </div>
+          )}
         </div>
         <div>
-          <h3 className="font-medium text-elephant-gray">{name}</h3>
-          <p className="text-sm text-elephant-gray/60">{location}</p>
+          <h4 className="font-playfair text-lg text-elephant-gray">{name}</h4>
+          <p className="text-sm text-elephant-gray/70">{location}</p>
         </div>
       </div>
-      <p className="text-elephant-gray/80 mb-4 italic">"{text}"</p>
-      {experience && (
-        <div className="text-sm text-tropical-green font-medium">
-          {experience}
-        </div>
-      )}
-    </motion.div>
+
+      <div className="flex items-center mb-3">
+        {[...Array(5)].map((_, index) => (
+          <FaStar
+            key={index}
+            className={`w-4 h-4 ${
+              index < rating ? 'text-yellow-400' : 'text-gray-300'
+            }`}
+          />
+        ))}
+        <span className="ml-2 text-sm text-elephant-gray/70">{date}</span>
+      </div>
+
+      <p className="text-elephant-gray leading-relaxed">{comment}</p>
+    </div>
   );
-} 
+};
+
+export default TestimonialCard; 
