@@ -3,12 +3,11 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { regions, type Region } from '@/config/data';
-import { costaSurImages, type CostaSurImage } from '@/config/costa-sur-images';
+import { regions } from '@/config/data';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 
-export default function CostaSurPage() {
-  const region = regions.find((r: Region) => r.id === 'costa-sur');
+export default function TemplosBudistasPage() {
+  const region = regions.find(r => r.id === 'templos-budistas');
 
   if (!region) {
     return (
@@ -47,7 +46,7 @@ export default function CostaSurPage() {
             items={[
               { label: 'Inicio', href: '/' },
               { label: 'Destinos', href: '/destinos' },
-              { label: region.name, href: `/destinos/costa-sur` }
+              { label: region.name, href: `/destinos/templos-budistas` }
             ]}
           />
         </div>
@@ -64,18 +63,18 @@ export default function CostaSurPage() {
               className="space-y-6"
             >
               <h2 className="text-3xl font-playfair font-bold text-tropical-green">
-                Descubre la Costa Sur
+                Descubre {region.name}
               </h2>
               <p className="text-lg text-elephant-gray">
-                La Costa Sur de Sri Lanka es un paraíso tropical donde las playas de arena dorada 
-                se encuentran con las aguas turquesas del Océano Índico. Desde el histórico 
-                Fuerte de Galle hasta las playas surferas de Weligama, cada rincón ofrece una 
-                experiencia única de lujo accesible y autenticidad.
+                Sumérgete en la rica herencia espiritual de Sri Lanka a través de sus magníficos 
+                templos budistas. Cada templo es una obra maestra arquitectónica que cuenta 
+                historias milenarias y ofrece una ventana única a la cultura y espiritualidad 
+                de la isla.
               </p>
               <div className="space-y-4">
                 <h3 className="text-xl font-bold text-elephant-gray">Destacados:</h3>
                 <ul className="list-disc list-inside space-y-2 text-elephant-gray">
-                  {region.highlights.map((highlight: string) => (
+                  {region.highlights.map((highlight) => (
                     <li key={highlight}>{highlight}</li>
                   ))}
                 </ul>
@@ -96,8 +95,8 @@ export default function CostaSurPage() {
                 Reserva tu estancia
               </h3>
               <p className="text-elephant-gray mb-6">
-                Encuentra los mejores hoteles boutique y resorts de lujo en la Costa Sur 
-                de Sri Lanka. Desde villas frente al mar hasta hoteles históricos en Galle.
+                Encuentra alojamientos cercanos a los templos más importantes, 
+                desde hoteles boutique hasta retiros espirituales tradicionales.
               </p>
               <a
                 href={region.affiliateLink}
@@ -109,39 +108,6 @@ export default function CostaSurPage() {
                 Ver alojamientos
               </a>
             </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Galería de Imágenes */}
-      <section className="py-16 px-4 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-playfair font-bold text-tropical-green mb-12 text-center">
-            Explora la Costa Sur
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {costaSurImages.map((image: CostaSurImage) => (
-              <motion.div
-                key={image.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="relative h-80 rounded-lg overflow-hidden group"
-              >
-                <Image
-                  src={`${image.url}?auto=format&fit=crop&w=800&q=80`}
-                  alt={image.title}
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                  <h3 className="text-xl font-bold mb-2">{image.title}</h3>
-                  <p className="text-sm">{image.description}</p>
-                  <p className="text-xs mt-2 opacity-75">Foto por: {image.credit}</p>
-                </div>
-              </motion.div>
-            ))}
           </div>
         </div>
       </section>

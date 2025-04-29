@@ -67,6 +67,19 @@ export default function Navbar() {
                       </Link>
                     </li>
                   </ul>
+                  <h4 className="text-sm font-bold text-tropical-green mt-3 mb-1">🛕 Cultura e Historia</h4>
+                  <ul className="text-sm space-y-1">
+                    <li>
+                      <Link href="/destinos/templos-budistas" className="block py-1 hover:text-ocean-blue transition-colors">
+                        Templos Budistas
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/destinos/ciudades-historicas" className="block py-1 hover:text-ocean-blue transition-colors">
+                        Ciudades Históricas
+                      </Link>
+                    </li>
+                  </ul>
                 </div>
               )}
             </div>
