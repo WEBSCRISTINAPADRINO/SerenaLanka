@@ -110,29 +110,13 @@ const verifiedExperiences: VerifiedExperience[] = [
 ];
 
 // Convertir las imágenes de yalaImages.galeria al formato Image
-const galleryImages: Image[] = [
-  {
-    src: '/images/gallery/temple.jpg',
-    alt: 'Templo budista antiguo',
-    width: 800,
-    height: 600,
-    filename: 'temple.jpg'
-  },
-  {
-    src: '/images/gallery/beach.jpg',
-    alt: 'Playa paradisíaca',
-    width: 800,
-    height: 600,
-    filename: 'beach.jpg'
-  },
-  {
-    src: '/images/gallery/tea.jpg',
-    alt: 'Plantación de té',
-    width: 800,
-    height: 600,
-    filename: 'tea.jpg'
-  }
-];
+const galleryImages: Image[] = yalaImages.galeria.map(img => ({
+  src: img.src,
+  alt: img.alt,
+  width: img.width,
+  height: img.height,
+  filename: img.filename
+}));
 
 const HomePage: React.FC = () => {
   return (
@@ -140,7 +124,7 @@ const HomePage: React.FC = () => {
       <Hero 
         title="Descubre el Lujo Accesible en Sri Lanka"
         subtitle="Experiencias únicas en destinos paradisíacos"
-        backgroundImage="/images/hero/sri-lanka-hero.jpg"
+        backgroundImage="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&q=80"
         ctaText="Explora Destinos"
         ctaLink="/destinos"
       />

@@ -16,72 +16,39 @@ export const yalaImages = {
   },
   experiencias: [
     {
-      src: '/images/safari-yala.jpg',
-      alt: 'Safari en Yala',
-      width: 800,
-      height: 600
+      src: 'https://images.unsplash.com/photo-1625126590447-cb769384e1f3?auto=format&fit=crop&q=80',
+      alt: 'Safari en Yala'
     },
     {
-      src: '/images/glamping-yala.jpg',
-      alt: 'Glamping en Yala',
-      width: 800,
-      height: 600
+      src: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80',
+      alt: 'Retiro de Yoga'
     },
     {
-      src: 'https://images.unsplash.com/photo-1623759594503-1bd82eaa60b6',
-      alt: 'Picnic gourmet en la sabana de Yala',
-      width: 800,
-      height: 600,
-      filename: 'picnic-gourmet.jpg'
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1572893289886-66108381cc65',
-      alt: 'Amanecer en la selva de Yala',
-      width: 800,
-      height: 600,
-      filename: 'amanecer-selva.jpg'
+      src: 'https://images.unsplash.com/photo-1578005343436-384a8426d8ed?auto=format&fit=crop&q=80',
+      alt: 'Templo budista'
     }
   ],
   galeria: [
     {
-      src: '/images/leopard-yala.jpg',
-      alt: 'Leopardo en Yala',
+      src: 'https://images.unsplash.com/photo-1578005343436-384a8426d8ed?auto=format&fit=crop&q=80',
+      alt: 'Templo budista antiguo',
       width: 800,
-      height: 600
+      height: 600,
+      filename: 'temple.jpg'
     },
     {
-      src: '/images/sunset-yala.jpg',
-      alt: 'Atardecer en Yala',
+      src: 'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&q=80',
+      alt: 'Playa paradisíaca',
       width: 800,
-      height: 600
+      height: 600,
+      filename: 'beach.jpg'
     },
     {
-      src: 'https://images.unsplash.com/photo-1561731216-c3a4d99437d5',
-      alt: 'Paisaje salvaje de Yala',
-      width: 1200,
-      height: 800,
-      filename: 'paisaje.jpg'
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1572893289886-66108381cc65',
-      alt: 'Amanecer espectacular en Yala',
-      width: 1200,
-      height: 800,
-      filename: 'amanecer.jpg'
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1552728089-57bdde30beb3',
-      alt: 'Aves exóticas en Yala',
-      width: 1200,
-      height: 800,
-      filename: 'aves.jpg'
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1623759594503-1bd82eaa60b6',
-      alt: 'Laguna natural en Yala',
-      width: 1200,
-      height: 800,
-      filename: 'laguna.jpg'
+      src: 'https://images.unsplash.com/photo-1598322974025-2f12523a4ccc?auto=format&fit=crop&q=80',
+      alt: 'Plantación de té',
+      width: 800,
+      height: 600,
+      filename: 'tea.jpg'
     }
   ],
   alojamientos: [
