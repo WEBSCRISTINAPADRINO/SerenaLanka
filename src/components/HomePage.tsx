@@ -124,18 +124,18 @@ const HomePage: React.FC = () => {
       <Hero 
         title="Descubre el Lujo Accesible en Sri Lanka"
         subtitle="Experiencias únicas en destinos paradisíacos"
-        backgroundImage="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&q=80"
+        backgroundImage="https://images.unsplash.com/photo-1578005343436-384a8426d8ed?auto=format&fit=crop&w=1920&q=80"
         ctaText="Explora Destinos"
         ctaLink="/destinos"
       />
       
-      <section className="py-16 px-4 bg-gray-50">
+      <section className="py-20 px-4 bg-coconut-white">
         <div className="max-w-7xl mx-auto">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-3xl font-bold text-center mb-12 text-tropical-green"
+            className="text-4xl md:text-5xl font-playfair font-bold text-center mb-16 text-tropical-green"
           >
             Explora Nuestros Destinos
           </motion.h2>
@@ -143,21 +143,49 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      <section className="py-16 px-4">
+      <section className="py-20 px-4 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-3xl font-bold text-center mb-12 text-tropical-green"
+            className="text-4xl md:text-5xl font-playfair font-bold text-center mb-16 text-tropical-green"
           >
             Galería de Destinos
           </motion.h2>
           <ImageGallery 
             images={galleryImages}
-            title="Galería de Destinos"
-            description="Explora los lugares más hermosos de Sri Lanka"
+            title="Descubre Sri Lanka"
+            description="Explora los lugares más hermosos de la perla del Índico"
           />
+        </div>
+      </section>
+
+      <section className="py-20 px-4 bg-coconut-white">
+        <div className="max-w-7xl mx-auto">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-4xl md:text-5xl font-playfair font-bold text-center mb-16 text-tropical-green"
+          >
+            Experiencias Únicas
+          </motion.h2>
+          <VerifiedExperiences experiences={verifiedExperiences} />
+        </div>
+      </section>
+
+      <section className="py-20 px-4 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-4xl md:text-5xl font-playfair font-bold text-center mb-16 text-tropical-green"
+          >
+            Tipos de Viajeros
+          </motion.h2>
+          <TravelerProfiles profiles={travelerProfiles} />
         </div>
       </section>
     </div>
