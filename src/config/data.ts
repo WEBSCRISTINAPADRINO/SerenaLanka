@@ -13,6 +13,24 @@ export interface Region {
 
 export const regions: Region[] = [
   {
+    id: 'costa-norte',
+    name: 'Costa Norte',
+    description: 'Descubre el auténtico Sri Lanka en sus playas vírgenes y cultura única',
+    image: 'https://images.unsplash.com/photo-1590123717596-9da01772cc6b?auto=format&fit=crop&w=800&q=80',
+    highlights: [
+      'Trincomalee - Bahía natural y playas paradisíacas',
+      'Jaffna - Cultura tamil y templos hindúes',
+      'Kalpitiya - Delfines y deportes acuáticos',
+      'Isla de Mannar - Historia y vida salvaje',
+      'Nilaveli - Playas vírgenes de arena blanca'
+    ],
+    slug: 'costa-norte',
+    affiliateLink: 'https://www.booking.com/region/lk/northern-province.html',
+    price: 'Desde $60/noche',
+    bestTime: 'Mayo a Septiembre',
+    emotion: 'Autenticidad y descubrimiento'
+  },
+  {
     id: 'costa-sur',
     name: 'Costa Sur',
     description: 'Playas paradisíacas y resorts de lujo',

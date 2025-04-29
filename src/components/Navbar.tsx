@@ -52,6 +52,11 @@ export default function Navbar() {
                   <h4 className="text-sm font-bold text-tropical-green mb-1">🌊 Regiones de Sri Lanka</h4>
                   <ul className="text-sm space-y-1">
                     <li>
+                      <Link href="/destinos/costa-norte" className="block py-1 hover:text-ocean-blue transition-colors">
+                        Costa Norte
+                      </Link>
+                    </li>
+                    <li>
                       <Link href="/destinos/costa-sur" className="block py-1 hover:text-ocean-blue transition-colors">
                         Costa Sur
                       </Link>
