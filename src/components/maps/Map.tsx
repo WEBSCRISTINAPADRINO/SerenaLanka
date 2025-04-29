@@ -1,90 +1,70 @@
 'use client';
 
+import React from 'react';
 import { useEffect, useRef } from 'react';
 import { Loader } from '@googlemaps/js-api-loader';
 
 interface MapProps {
   location: string;
-  latitude: number;
-  longitude: number;
   zoom?: number;
+  apiKey: string;
 }
 
-export default function Map({
-  location,
-  latitude,
-  longitude,
-  zoom = 15
-}: MapProps) {
+const Map: React.FC<MapProps> = ({ location, zoom = 15, apiKey }) => {
   const mapRef = useRef<HTMLDivElement>(null);
   const googleMapRef = useRef<google.maps.Map | null>(null);
 
   useEffect(() => {
     const initMap = async () => {
+      if (!mapRef.current) return;
+
       const loader = new Loader({
-        apiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || '',
-        version: 'weekly',
-        libraries: ['places']
+        apiKey: apiKey,
+        version: "weekly"
       });
 
       try {
         const google = await loader.load();
-        const { Map } = await google.maps.importLibrary("maps") as google.maps.MapsLibrary;
+        const geocoder = new google.maps.Geocoder();
         
-        if (mapRef.current && !googleMapRef.current) {
-          const mapOptions: google.maps.MapOptions = {
-            center: { lat: latitude, lng: longitude },
-            zoom,
-            mapTypeId: 'hybrid',
-            styles: [
-              {
-                featureType: 'all',
-                elementType: 'labels.text.fill',
-                stylers: [{ color: '#424242' }]
-              },
-              {
-                featureType: 'water',
-                elementType: 'geometry',
-                stylers: [{ color: '#1976D2' }]
-              },
-              // Más estilos personalizados...
-            ],
-            mapTypeControl: false,
-            streetViewControl: false,
-            fullscreenControl: true,
-            zoomControl: true
-          };
+        geocoder.geocode({ address: location }, (results, status) => {
+          if (status === 'OK' && results && results[0] && mapRef.current) {
+            const position = {
+              lat: results[0].geometry.location.lat(),
+              lng: results[0].geometry.location.lng()
+            };
 
-          googleMapRef.current = new Map(mapRef.current, mapOptions);
+            const map = new google.maps.Map(mapRef.current, {
+              center: position,
+              zoom: zoom,
+              mapTypeControl: false,
+              fullscreenControl: false,
+              streetViewControl: false
+            });
 
-          // Añadir marcador personalizado
-          new google.maps.Marker({
-            position: { lat: latitude, lng: longitude },
-            map: googleMapRef.current,
-            title: location,
-            animation: google.maps.Animation.DROP,
-            icon: {
-              url: '/images/icons/marker.svg',
-              scaledSize: new google.maps.Size(40, 40)
-            }
-          });
-        }
+            new google.maps.Marker({
+              position: position,
+              map: map,
+              title: location
+            });
+
+            googleMapRef.current = map;
+          }
+        });
       } catch (error) {
         console.error('Error loading Google Maps:', error);
       }
     };
 
     initMap();
-  }, [latitude, longitude, zoom, location]);
+  }, [location, zoom, apiKey]);
 
   return (
-    <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden shadow-lg">
-      <div
-        ref={mapRef}
-        className="absolute inset-0"
-        aria-label={`Mapa mostrando la ubicación de ${location}`}
-        role="application"
-      />
-    </div>
+    <div 
+      ref={mapRef} 
+      className="w-full h-[400px] rounded-lg shadow-lg"
+    />
   );
-} 
+};
+
+export default Map; 
