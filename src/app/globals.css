@@ -30,4 +30,32 @@ body {
   .card {
     @apply bg-white rounded-lg shadow-md overflow-hidden;
   }
+}
+
+/* Estilos para los marcadores del mapa */
+.destination-marker {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  transition: transform 0.2s;
+}
+
+.destination-marker:hover {
+  transform: scale(1.2);
+}
+
+/* Estilos para los popups del mapa */
+.mapboxgl-popup-content {
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.mapboxgl-popup-close-button {
+  font-size: 16px;
+  color: #666;
+  padding: 4px 8px;
 } 
