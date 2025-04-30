@@ -42,7 +42,7 @@ export default function Navbar() {
               className="flex items-center hover:text-ocean-blue transition-colors group"
               title="Mapa Interactivo"
             >
-              <SriLankaIcon className="w-8 h-8 group-hover:scale-110 transition-transform" />
+              <SriLankaIcon className="w-6 h-8 group-hover:scale-110 transition-transform" />
             </Link>
 
             {/* Destinos con Submenú */}

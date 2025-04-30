@@ -8,7 +8,7 @@ interface SriLankaIconProps {
 export default function SriLankaIcon({ className = "w-6 h-6", color = "currentColor" }: SriLankaIconProps) {
   return (
     <svg
-      viewBox="0 0 500 500"
+      viewBox="0 0 100 150"
       className={className}
       fill="none"
       stroke={color}
@@ -16,7 +16,23 @@ export default function SriLankaIcon({ className = "w-6 h-6", color = "currentCo
       strokeLinecap="round"
       strokeLinejoin="round"
     >
-      <path d="M120 180 L110 220 L105 280 L115 320 L125 350 L130 380 L140 400 L160 420 L180 430 L200 440 L240 445 L280 440 L320 430 L350 410 L370 390 L380 350 L385 300 L390 250 L385 200 L375 150 L340 130 L300 120 L250 115 L200 120 L150 130 L120 180 Z" />
+      {/* Forma más precisa de Sri Lanka, como una gota o lágrima */}
+      <path d="
+        M 50 20
+        C 45 22, 40 25, 38 30
+        C 35 38, 33 45, 32 50
+        C 30 60, 28 70, 30 80
+        C 32 90, 35 100, 40 110
+        C 45 120, 50 125, 55 128
+        C 60 130, 65 130, 70 128
+        C 75 125, 78 120, 80 115
+        C 82 110, 83 105, 83 100
+        C 83 90, 82 80, 80 70
+        C 78 60, 75 50, 70 40
+        C 65 30, 60 25, 55 22
+        C 53 21, 51 20, 50 20
+        Z
+      " />
     </svg>
   );
 } 
