@@ -14,7 +14,6 @@ import TravelerProfiles from '@/components/TravelerProfiles';
 import VerifiedExperiences from '@/components/VerifiedExperiences';
 import CustomItinerary from '@/components/CustomItinerary';
 import RecommendedProducts from '@/components/RecommendedProducts';
-import SriLankaMap from '@/components/SriLankaMap';
 import { yalaImages } from '@/config/images';
 import { Region, TravelerProfile, VerifiedExperience, Image } from '@/types/components';
 
@@ -144,17 +143,6 @@ const HomePage: React.FC = () => {
       
       <section className="py-20 px-4 bg-coconut-white">
         <div className="max-w-7xl mx-auto">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-4xl md:text-5xl font-playfair font-bold text-center mb-16 text-tropical-green"
-          >
-            Explora Nuestros Destinos
-          </motion.h2>
-          <div className="mb-16">
-            <SriLankaMap />
-          </div>
           <DestinationsSlider />
         </div>
       </section>
