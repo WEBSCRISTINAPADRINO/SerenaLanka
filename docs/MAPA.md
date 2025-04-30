@@ -136,3 +136,105 @@ Para añadir nuevos destinos, agregar al array `destinations` en `SriLankaMap.ts
 Los estilos se pueden modificar en:
 - `SriLankaMap.tsx` para estilos del mapa y popups
 - `SriLankaIcon.tsx` para el icono del navbar 
+
+## 7. Desarrollo y Despliegue
+
+### 7.1 Entorno de Desarrollo
+```bash
+# Iniciar el servidor de desarrollo
+npm run dev
+
+# El mapa estará disponible en:
+http://localhost:3000/mapa
+```
+
+### 7.2 Variables de Entorno
+```env
+# Necesarias para el despliegue en producción
+NEXT_PUBLIC_MAPBOX_TOKEN=tu_token_aqui  # Si se decide usar Mapbox en el futuro
+```
+
+### 7.3 Optimización
+- Los iconos del mapa están optimizados para dispositivos retina
+- Las imágenes se cargan de forma lazy
+- Los popups se renderizan solo cuando son necesarios
+
+## 8. Responsividad
+
+### 8.1 Adaptación Móvil
+- El mapa se ajusta automáticamente al tamaño de la pantalla
+- Altura mínima de 600px en desktop, ajustable en móvil
+- Controles de zoom adaptados para touch
+
+### 8.2 Breakpoints
+```css
+/* Tamaños del mapa según dispositivo */
+.map-container {
+  height: 600px;  /* Desktop */
+  @media (max-width: 768px) {
+    height: 400px;  /* Tablet */
+  }
+  @media (max-width: 480px) {
+    height: 300px;  /* Mobile */
+  }
+}
+```
+
+## 9. SEO y Accesibilidad
+
+### 9.1 SEO
+- Títulos y descripciones optimizados para cada destino
+- URLs amigables para cada región
+- Metadatos específicos para la página del mapa
+
+### 9.2 Accesibilidad
+- Marcadores y popups navegables por teclado
+- Textos alternativos para los iconos
+- Contraste de colores optimizado
+- ARIA labels en elementos interactivos
+
+## 10. Solución de Problemas
+
+### 10.1 Problemas Comunes
+1. **Mapa no se carga**:
+   - Verificar que Leaflet está instalado
+   - Comprobar que los estilos de Leaflet están importados
+   - Asegurar que el contenedor del mapa tiene dimensiones
+
+2. **Marcadores no aparecen**:
+   - Verificar que las imágenes de los marcadores existen en `/public/images/map/`
+   - Comprobar las coordenadas
+   - Validar que el zoom permite ver los marcadores
+
+3. **Popups no funcionan**:
+   - Revisar los event listeners
+   - Verificar la estructura HTML de los popups
+   - Comprobar los estilos personalizados
+
+### 10.2 Mejores Prácticas
+1. **Rendimiento**:
+   - Usar `useCallback` para funciones de eventos
+   - Implementar lazy loading para imágenes grandes
+   - Limitar el número de marcadores visibles según el zoom
+
+2. **Mantenimiento**:
+   - Mantener las coordenadas en un archivo de configuración separado
+   - Documentar cambios en el mapa
+   - Hacer backups de la configuración
+
+3. **Actualizaciones**:
+   - Revisar periódicamente las actualizaciones de Leaflet
+   - Mantener los marcadores y descripciones actualizados
+   - Verificar los enlaces a las páginas de destinos
+
+## 11. Recursos Adicionales
+
+### 11.1 Referencias
+- [Documentación de Leaflet](https://leafletjs.com/reference.html)
+- [OpenStreetMap Wiki](https://wiki.openstreetmap.org/)
+- [Next.js con Leaflet](https://nextjs.org/docs/pages/building-your-application/optimizing/lazy-loading)
+
+### 11.2 Herramientas Útiles
+- [Coordenadas Finder](https://www.latlong.net/) - Para encontrar coordenadas exactas
+- [Mapbox Studio](https://www.mapbox.com/studio) - Si se decide personalizar más el mapa
+- [GeoJSON Tools](https://geojson.io/) - Para crear regiones personalizadas 
