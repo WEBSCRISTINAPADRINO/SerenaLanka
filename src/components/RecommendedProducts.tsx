@@ -1,77 +1,86 @@
 'use client';
 
+import React from 'react';
 import { motion } from 'framer-motion';
+import { FiShoppingBag, FiStar, FiTag } from 'react-icons/fi';
 import AffiliateLink from './common/AffiliateLink';
 
-const recommendedProducts = [
-  {
-    id: 1,
-    title: 'Equipo Esencial para Sri Lanka',
-    description: 'Todo lo que necesitas para tu aventura tropical',
-    image: '/images/products/travel-gear.jpg',
-    platform: 'amazon',
-    path: '/s?k=equipo+viaje+tropical',
-    categories: [
-      { name: 'Mochilas Impermeables', path: '/s?k=mochila+impermeable+viaje' },
-      { name: 'Ropa Tropical', path: '/s?k=ropa+tropical+viaje' },
-      { name: 'Protección Solar', path: '/s?k=proteccion+solar+tropical' }
-    ]
-  },
-  {
-    id: 2,
-    title: 'Fotografía y Documentación',
-    description: 'Captura tus momentos inolvidables',
-    image: '/images/products/camera-gear.jpg',
-    platform: 'amazon',
-    path: '/s?k=camara+viaje',
-    categories: [
-      { name: 'Cámaras Compactas', path: '/s?k=camara+compacta+viaje' },
-      { name: 'GoPro y Accesorios', path: '/s?k=gopro+accesorios' },
-      { name: 'Drones de Viaje', path: '/s?k=drone+viaje' }
-    ]
-  },
-  {
-    id: 3,
-    title: 'Bienestar y Salud',
-    description: 'Mantente saludable durante tu viaje',
-    image: '/images/products/wellness-gear.jpg',
-    platform: 'amazon',
-    path: '/s?k=salud+viaje+tropical',
-    categories: [
-      { name: 'Repelente Natural', path: '/s?k=repelente+natural+mosquitos' },
-      { name: 'Botiquín de Viaje', path: '/s?k=botiquin+viaje+tropical' },
-      { name: 'Accesorios Yoga', path: '/s?k=accesorios+yoga+viaje' }
-    ]
-  }
-] as const;
+type Platform = 'amazon' | 'booking' | 'getyourguide' | 'aviator' | 'agoda' | 'expedia' | 'klook';
 
-export default function RecommendedProducts() {
+interface Product {
+  id: number;
+  title: string;
+  description: string;
+  price: string;
+  image: string;
+  platform: Platform;
+  path: string;
+  rating: number;
+  category: string;
+}
+
+const RecommendedProducts = () => {
+  const products: Product[] = [
+    {
+      id: 1,
+      title: 'Guía de Viaje Sri Lanka',
+      description: 'La guía más completa con mapas detallados y consejos locales',
+      price: '24.99€',
+      image: '/images/products/guide-book.jpg',
+      platform: 'amazon',
+      path: '/s?k=guia+viaje+sri+lanka',
+      rating: 4.8,
+      category: 'Libros'
+    },
+    {
+      id: 2,
+      title: 'Repelente Natural',
+      description: 'Repelente de mosquitos 100% natural, ideal para climas tropicales',
+      price: '12.99€',
+      image: '/images/products/repellent.jpg',
+      platform: 'amazon',
+      path: '/s?k=repelente+natural+mosquitos',
+      rating: 4.5,
+      category: 'Salud'
+    },
+    {
+      id: 3,
+      title: 'Cámara Impermeable',
+      description: 'Cámara compacta resistente al agua para capturar tus aventuras',
+      price: '89.99€',
+      image: '/images/products/camera.jpg',
+      platform: 'amazon',
+      path: '/s?k=camara+impermeable+viaje',
+      rating: 4.7,
+      category: 'Electrónica'
+    }
+  ];
+
   return (
     <section className="py-20 bg-elephant-gray/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className="font-playfair text-3xl md:text-4xl text-elephant-gray mb-4">
-            Equípate para tu Aventura
+          <h2 className="text-3xl font-playfair font-bold text-tropical-green mb-4">
+            Productos Recomendados
           </h2>
-          <p className="text-elephant-gray/80 text-lg">
-            Productos seleccionados para hacer tu viaje más cómodo y memorable
+          <p className="text-elephant-gray max-w-2xl mx-auto">
+            Descubre los productos esenciales para tu viaje a Sri Lanka, cuidadosamente seleccionados por nuestros expertos.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {recommendedProducts.map((product, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {products.map((product) => (
             <motion.div
               key={product.id}
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: product.id * 0.1 }}
+              className="bg-white rounded-xl shadow-lg overflow-hidden"
             >
               <div className="relative h-48">
                 <img
@@ -79,50 +88,41 @@ export default function RecommendedProducts() {
                   alt={product.title}
                   className="w-full h-full object-cover"
                 />
+                <div className="absolute top-2 right-2 bg-tropical-green text-white px-2 py-1 rounded-full text-sm">
+                  {product.category}
+                </div>
               </div>
-
+              
               <div className="p-6">
-                <h3 className="font-playfair text-xl text-elephant-gray mb-2">
-                  {product.title}
-                </h3>
-                <p className="text-elephant-gray/80 text-sm mb-4">
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="text-xl font-playfair font-bold text-elephant-gray">
+                    {product.title}
+                  </h3>
+                  <div className="flex items-center text-golden-sand">
+                    <FiStar className="mr-1" />
+                    <span>{product.rating}</span>
+                  </div>
+                </div>
+                
+                <p className="text-elephant-gray mb-4">
                   {product.description}
                 </p>
-
-                <ul className="space-y-2 mb-6">
-                  {product.categories.map((category) => (
-                    <li key={category.path}>
-                      <AffiliateLink
-                        platform="amazon"
-                        path={category.path}
-                        className="text-ocean-blue hover:text-ocean-blue/80 transition-colors text-sm flex items-center"
-                      >
-                        <svg
-                          className="w-4 h-4 mr-2"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M13 7l5 5m0 0l-5 5m5-5H6"
-                          />
-                        </svg>
-                        {category.name}
-                      </AffiliateLink>
-                    </li>
-                  ))}
-                </ul>
-
-                <AffiliateLink
-                  platform="amazon"
-                  path={product.path}
-                  className="block text-center bg-tropical-green text-white px-6 py-2 rounded-full font-semibold hover:bg-opacity-90 transition-colors"
-                >
-                  Ver Todo {product.title}
-                </AffiliateLink>
+                
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center text-tropical-green font-bold">
+                    <FiTag className="mr-1" />
+                    {product.price}
+                  </div>
+                  
+                  <AffiliateLink
+                    platform={product.platform}
+                    path={product.path}
+                    className="flex items-center bg-tropical-green text-white px-4 py-2 rounded-lg hover:bg-opacity-90 transition-all"
+                  >
+                    <FiShoppingBag className="mr-2" />
+                    Comprar
+                  </AffiliateLink>
+                </div>
               </div>
             </motion.div>
           ))}
@@ -130,4 +130,6 @@ export default function RecommendedProducts() {
       </div>
     </section>
   );
-} 
+};
+
+export default RecommendedProducts; 

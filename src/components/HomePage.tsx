@@ -14,9 +14,9 @@ import TravelerProfiles from '@/components/TravelerProfiles';
 import VerifiedExperiences from '@/components/VerifiedExperiences';
 import CustomItinerary from '@/components/CustomItinerary';
 import RecommendedProducts from '@/components/RecommendedProducts';
+import SriLankaMap from '@/components/SriLankaMap';
 import { yalaImages } from '@/config/images';
 import { Region, TravelerProfile, VerifiedExperience, Image } from '@/types/components';
-import SriLankaMap from '@/components/SriLankaMap';
 
 // Datos de las regiones
 const regions: Region[] = [
@@ -45,10 +45,22 @@ const regions: Region[] = [
     emotion: 'Paz y descubrimiento'
   },
   {
+    id: 'costa-oeste',
+    name: 'Costa Oeste',
+    description: 'Cultura, comercio y atardeceres',
+    image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80',
+    highlights: ['Negombo', 'Chilaw', 'Kalpitiya'],
+    slug: 'costa-oeste',
+    affiliateLink: 'https://www.booking.com/region/lk/western-province.html',
+    price: 'Desde $90/noche',
+    bestTime: 'Diciembre a Marzo',
+    emotion: 'Cultura y tradición'
+  },
+  {
     id: 'montanas',
     name: 'Montañas',
     description: 'Plantaciones de té y senderos de montaña',
-    image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1578005343436-384a8426d8ed?auto=format&fit=crop&w=800&q=80',
     highlights: ['Nuwara Eliya', 'Ella', 'Kandy'],
     slug: 'montanas',
     affiliateLink: 'https://www.booking.com/region/lk/central-province.html',
@@ -190,6 +202,74 @@ const HomePage: React.FC = () => {
             Tipos de Viajeros
           </motion.h2>
           <TravelerProfiles profiles={travelerProfiles} />
+        </div>
+      </section>
+
+      <section className="py-20 px-4 bg-coconut-white">
+        <div className="max-w-7xl mx-auto">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-4xl md:text-5xl font-playfair font-bold text-center mb-16 text-tropical-green"
+          >
+            Planifica tu Viaje
+          </motion.h2>
+          <CustomItinerary />
+        </div>
+      </section>
+
+      <section className="py-20 px-4 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-4xl md:text-5xl font-playfair font-bold text-center mb-16 text-tropical-green"
+          >
+            Productos Recomendados
+          </motion.h2>
+          <RecommendedProducts />
+        </div>
+      </section>
+
+      <section className="py-20 px-4 bg-coconut-white">
+        <div className="max-w-7xl mx-auto">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-4xl md:text-5xl font-playfair font-bold text-center mb-16 text-tropical-green"
+          >
+            Testimonios
+          </motion.h2>
+          <Testimonials />
+        </div>
+      </section>
+
+      <section className="py-20 px-4 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-4xl md:text-5xl font-playfair font-bold text-center mb-16 text-tropical-green"
+          >
+            Nuestro Blog
+          </motion.h2>
+          <BlogPreview />
+        </div>
+      </section>
+
+      <section className="py-20 px-4 bg-coconut-white">
+        <div className="max-w-7xl mx-auto">
+          <LuxuryManifesto />
+        </div>
+      </section>
+
+      <section className="py-20 px-4 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <Newsletter />
         </div>
       </section>
     </div>

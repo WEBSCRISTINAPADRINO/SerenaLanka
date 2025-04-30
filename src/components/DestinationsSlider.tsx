@@ -20,7 +20,7 @@ const destinations: Destination[] = [
     id: 'costa-sur',
     title: 'Costa Sur',
     subtitle: 'Playas paradisíacas y resorts de lujo',
-    image: '/images/destinations/costa-sur.jpg',
+    image: 'https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=800&q=80',
     href: '/destinos/costa-sur',
     highlights: ['Galle', 'Mirissa', 'Unawatuna'],
     bestTime: 'Diciembre a Abril'
@@ -29,7 +29,7 @@ const destinations: Destination[] = [
     id: 'costa-este',
     title: 'Costa Este',
     subtitle: 'Aguas cristalinas y arrecifes de coral',
-    image: '/images/destinations/costa-este.jpg',
+    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80',
     href: '/destinos/costa-este',
     highlights: ['Trincomalee', 'Arugam Bay', 'Pasikuda'],
     bestTime: 'Mayo a Septiembre'
@@ -38,7 +38,7 @@ const destinations: Destination[] = [
     id: 'costa-norte',
     title: 'Costa Norte',
     subtitle: 'Historia colonial y playas vírgenes',
-    image: '/images/destinations/costa-norte.jpg',
+    image: 'https://images.unsplash.com/photo-1578005343436-384a8426d8ed?auto=format&fit=crop&w=800&q=80',
     href: '/destinos/costa-norte',
     highlights: ['Jaffna', 'Point Pedro', 'Delft Island'],
     bestTime: 'Mayo a Septiembre'
@@ -47,7 +47,7 @@ const destinations: Destination[] = [
     id: 'costa-oeste',
     title: 'Costa Oeste',
     subtitle: 'Cultura, comercio y atardeceres',
-    image: '/images/destinations/costa-oeste.jpg',
+    image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80',
     href: '/destinos/costa-oeste',
     highlights: ['Negombo', 'Chilaw', 'Kalpitiya'],
     bestTime: 'Diciembre a Marzo'
@@ -56,7 +56,7 @@ const destinations: Destination[] = [
     id: 'montanas',
     title: 'Montañas',
     subtitle: 'Plantaciones de té y senderos místicos',
-    image: '/images/destinations/montanas.jpg',
+    image: 'https://images.unsplash.com/photo-1578005343436-384a8426d8ed?auto=format&fit=crop&w=800&q=80',
     href: '/destinos/montanas',
     highlights: ['Nuwara Eliya', 'Ella', 'Kandy'],
     bestTime: 'Todo el año'
@@ -65,7 +65,7 @@ const destinations: Destination[] = [
     id: 'templos',
     title: 'Templos Budistas',
     subtitle: 'Espiritualidad y cultura milenaria',
-    image: '/images/destinations/templos.jpg',
+    image: 'https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=800&q=80',
     href: '/destinos/templos-budistas',
     highlights: ['Dambulla', 'Anuradhapura', 'Polonnaruwa'],
     bestTime: 'Todo el año'
@@ -74,7 +74,7 @@ const destinations: Destination[] = [
     id: 'ciudades',
     title: 'Ciudades Históricas',
     subtitle: 'Historia viva y tradiciones',
-    image: '/images/destinations/ciudades.jpg',
+    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80',
     href: '/destinos/ciudades-historicas',
     highlights: ['Colombo', 'Kandy', 'Galle Fort'],
     bestTime: 'Todo el año'

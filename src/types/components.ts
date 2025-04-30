@@ -3,7 +3,7 @@ export interface Region {
   name: string;
   description: string;
   image: string;
-  highlights?: string[];
+  highlights: string[];
   slug: string;
   affiliateLink: string;
   price: string;
@@ -37,6 +37,16 @@ export interface Image {
   width: number;
   height: number;
   filename: string;
+}
+
+export interface Destination {
+  id: string;
+  title: string;
+  subtitle: string;
+  image: string;
+  href: string;
+  highlights: string[];
+  bestTime?: string;
 }
 
 export interface RegionsExplorerProps {

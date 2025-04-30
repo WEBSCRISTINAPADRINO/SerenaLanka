@@ -1,6 +1,8 @@
 'use client';
 
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { FiCalendar, FiUsers, FiMapPin, FiDollarSign } from 'react-icons/fi';
 import AffiliateLink from './common/AffiliateLink';
 
 const bookingOptions = [
@@ -87,7 +89,20 @@ const experienceOptions = [
   }
 ];
 
-export default function CustomItinerary() {
+const CustomItinerary = () => {
+  const [formData, setFormData] = useState({
+    duration: '7-10 días',
+    travelers: '2',
+    budget: 'medio',
+    interests: ['playa', 'cultura']
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Aquí iría la lógica para generar el itinerario
+    console.log('Generando itinerario con:', formData);
+  };
+
   return (
     <section className="py-20 bg-elephant-gray/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -226,7 +241,112 @@ export default function CustomItinerary() {
             Encuentra los Mejores Vuelos
           </AffiliateLink>
         </motion.div>
+
+        <div className="max-w-4xl mx-auto mt-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="bg-white rounded-xl shadow-lg p-8"
+          >
+            <h3 className="text-2xl font-playfair font-bold text-tropical-green mb-6">
+              Crea tu Itinerario Personalizado
+            </h3>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label className="flex items-center text-elephant-gray">
+                    <FiCalendar className="mr-2" />
+                    Duración del viaje
+                  </label>
+                  <select
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-tropical-green focus:border-transparent"
+                    value={formData.duration}
+                    onChange={(e) => setFormData({ ...formData, duration: e.target.value })}
+                  >
+                    <option value="3-5 días">3-5 días</option>
+                    <option value="7-10 días">7-10 días</option>
+                    <option value="10-14 días">10-14 días</option>
+                    <option value="más de 14 días">más de 14 días</option>
+                  </select>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="flex items-center text-elephant-gray">
+                    <FiUsers className="mr-2" />
+                    Número de viajeros
+                  </label>
+                  <select
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-tropical-green focus:border-transparent"
+                    value={formData.travelers}
+                    onChange={(e) => setFormData({ ...formData, travelers: e.target.value })}
+                  >
+                    <option value="1">1 viajero</option>
+                    <option value="2">2 viajeros</option>
+                    <option value="3-4">3-4 viajeros</option>
+                    <option value="5+">5+ viajeros</option>
+                  </select>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="flex items-center text-elephant-gray">
+                    <FiDollarSign className="mr-2" />
+                    Presupuesto
+                  </label>
+                  <select
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-tropical-green focus:border-transparent"
+                    value={formData.budget}
+                    onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
+                  >
+                    <option value="bajo">Económico</option>
+                    <option value="medio">Medio</option>
+                    <option value="alto">Lujo</option>
+                  </select>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="flex items-center text-elephant-gray">
+                    <FiMapPin className="mr-2" />
+                    Intereses principales
+                  </label>
+                  <div className="flex flex-wrap gap-2">
+                    {['playa', 'cultura', 'aventura', 'naturaleza', 'gastronomía', 'bienestar'].map((interest) => (
+                      <button
+                        key={interest}
+                        type="button"
+                        className={`px-3 py-1 rounded-full text-sm ${
+                          formData.interests.includes(interest)
+                            ? 'bg-tropical-green text-white'
+                            : 'bg-gray-100 text-elephant-gray hover:bg-gray-200'
+                        }`}
+                        onClick={() => {
+                          setFormData({
+                            ...formData,
+                            interests: formData.interests.includes(interest)
+                              ? formData.interests.filter(i => i !== interest)
+                              : [...formData.interests, interest]
+                          });
+                        }}
+                      >
+                        {interest}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                className="w-full bg-tropical-green text-white py-3 px-6 rounded-lg font-bold hover:bg-opacity-90 transition-all"
+              >
+                Generar Itinerario
+              </button>
+            </form>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
-} 
+};
+
+export default CustomItinerary; 
