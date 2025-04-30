@@ -5,6 +5,13 @@ const nextConfig = {
     unoptimized: true,
   },
   trailingSlash: true,
+  experimental: {
+    outputFileTracingExcludes: {
+      '*': [
+        '**/*.txt',
+      ],
+    },
+  },
 }
 
 module.exports = nextConfig 
