@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "download-images": "node scripts/download-wellness-images.js",
-    "download-costa-oeste-images": "ts-node -P scripts/tsconfig.json scripts/download-costa-oeste-images.ts"
+    "download-costa-oeste-images": "ts-node -P scripts/tsconfig.json scripts/download-costa-oeste-images.ts",
+    "download-destination-images": "ts-node scripts/download-destination-images.ts"
   },
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.16.8",
