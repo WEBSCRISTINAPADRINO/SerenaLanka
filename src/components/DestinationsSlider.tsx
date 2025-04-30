@@ -1,171 +1,179 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import { IoChevronBackOutline, IoChevronForwardOutline } from 'react-icons/io5';
+import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
-interface Destination {
-  id: string;
-  title: string;
-  subtitle: string;
-  image: string;
-  href: string;
-  highlights: string[];
-  bestTime?: string;
-}
-
-const destinations: Destination[] = [
+const destinations = [
   {
     id: 'costa-sur',
-    title: 'Costa Sur',
-    subtitle: 'Playas paradisíacas y resorts de lujo',
-    image: 'https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=800&q=80',
+    title: 'DESCUBRE LA COSTA SUR',
+    image: '/images/destinos/costa-sur/galle-1.jpg',
     href: '/destinos/costa-sur',
-    highlights: ['Galle', 'Mirissa', 'Unawatuna'],
-    bestTime: 'Diciembre a Abril'
+    description: 'Playas paradisíacas, fortalezas coloniales y avistamiento de ballenas'
   },
   {
     id: 'costa-este',
-    title: 'Costa Este',
-    subtitle: 'Aguas cristalinas y arrecifes de coral',
-    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80',
+    title: 'EXPLORA LA COSTA ESTE',
+    image: '/images/destinos/costa-este/trincomalee-1.jpg',
     href: '/destinos/costa-este',
-    highlights: ['Trincomalee', 'Arugam Bay', 'Pasikuda'],
-    bestTime: 'Mayo a Septiembre'
+    description: 'Aguas cristalinas y arrecifes de coral vírgenes'
   },
   {
     id: 'costa-norte',
-    title: 'Costa Norte',
-    subtitle: 'Historia colonial y playas vírgenes',
-    image: 'https://images.unsplash.com/photo-1578005343436-384a8426d8ed?auto=format&fit=crop&w=800&q=80',
+    title: 'CONOCE LA COSTA NORTE',
+    image: '/images/destinos/costa-norte/jaffna-1.jpg',
     href: '/destinos/costa-norte',
-    highlights: ['Jaffna', 'Point Pedro', 'Delft Island'],
-    bestTime: 'Mayo a Septiembre'
+    description: 'Cultura tamil y templos milenarios'
   },
   {
     id: 'costa-oeste',
-    title: 'Costa Oeste',
-    subtitle: 'Cultura, comercio y atardeceres',
-    image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80',
+    title: 'VIVE LA COSTA OESTE',
+    image: '/images/destinos/costa-oeste/colombo-1.jpg',
     href: '/destinos/costa-oeste',
-    highlights: ['Negombo', 'Chilaw', 'Kalpitiya'],
-    bestTime: 'Diciembre a Marzo'
+    description: 'Modernidad y tradición en perfecta armonía'
   },
   {
     id: 'montanas',
-    title: 'Montañas',
-    subtitle: 'Plantaciones de té y senderos místicos',
-    image: 'https://images.unsplash.com/photo-1578005343436-384a8426d8ed?auto=format&fit=crop&w=800&q=80',
+    title: 'AVENTÚRATE EN LAS MONTAÑAS',
+    image: '/images/destinos/montanas/ella-1.jpg',
     href: '/destinos/montanas',
-    highlights: ['Nuwara Eliya', 'Ella', 'Kandy'],
-    bestTime: 'Todo el año'
-  },
-  {
-    id: 'templos',
-    title: 'Templos Budistas',
-    subtitle: 'Espiritualidad y cultura milenaria',
-    image: 'https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=800&q=80',
-    href: '/destinos/templos-budistas',
-    highlights: ['Dambulla', 'Anuradhapura', 'Polonnaruwa'],
-    bestTime: 'Todo el año'
-  },
-  {
-    id: 'ciudades',
-    title: 'Ciudades Históricas',
-    subtitle: 'Historia viva y tradiciones',
-    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80',
-    href: '/destinos/ciudades-historicas',
-    highlights: ['Colombo', 'Kandy', 'Galle Fort'],
-    bestTime: 'Todo el año'
+    description: 'Plantaciones de té y paisajes de ensueño'
   }
 ];
 
 const DestinationsSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const itemsToShow = 3; // Número de tarjetas visibles a la vez
+  const [direction, setDirection] = useState(0);
 
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) => 
-      prevIndex + 1 >= destinations.length - (itemsToShow - 1) ? 0 : prevIndex + 1
-    );
+  const slideVariants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? 1000 : -1000,
+      opacity: 0
+    }),
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1
+    },
+    exit: (direction: number) => ({
+      zIndex: 0,
+      x: direction < 0 ? 1000 : -1000,
+      opacity: 0
+    })
   };
 
-  const prevSlide = () => {
-    setCurrentIndex((prevIndex) => 
-      prevIndex - 1 < 0 ? destinations.length - itemsToShow : prevIndex - 1
-    );
+  const swipeConfidenceThreshold = 10000;
+  const swipePower = (offset: number, velocity: number) => {
+    return Math.abs(offset) * velocity;
+  };
+
+  const paginate = (newDirection: number) => {
+    setDirection(newDirection);
+    setCurrentIndex((prevIndex) => (prevIndex + newDirection + destinations.length) % destinations.length);
   };
 
   return (
-    <div className="relative w-full max-w-7xl mx-auto px-4 py-12">
-      <h2 className="text-4xl font-playfair font-bold text-tropical-green text-center mb-12">
-        Explora Nuestros Destinos
-      </h2>
-      
-      <div className="relative overflow-hidden">
-        <div className="flex items-center justify-between absolute top-1/2 transform -translate-y-1/2 w-full z-10 px-4">
-          <button
-            onClick={prevSlide}
-            className="bg-white/80 hover:bg-white p-2 rounded-full shadow-lg transition-all"
-            aria-label="Anterior destino"
-          >
-            <IoChevronBackOutline className="w-6 h-6 text-tropical-green" />
-          </button>
-          <button
-            onClick={nextSlide}
-            className="bg-white/80 hover:bg-white p-2 rounded-full shadow-lg transition-all"
-            aria-label="Siguiente destino"
-          >
-            <IoChevronForwardOutline className="w-6 h-6 text-tropical-green" />
-          </button>
-        </div>
+    <div className="relative h-[80vh] w-full overflow-hidden bg-black">
+      <AnimatePresence initial={false} custom={direction}>
+        <motion.div
+          key={currentIndex}
+          custom={direction}
+          variants={slideVariants}
+          initial="enter"
+          animate="center"
+          exit="exit"
+          transition={{
+            x: { type: "spring", stiffness: 300, damping: 30 },
+            opacity: { duration: 0.2 }
+          }}
+          drag="x"
+          dragConstraints={{ left: 0, right: 0 }}
+          dragElastic={1}
+          onDragEnd={(e, { offset, velocity }) => {
+            const swipe = swipePower(offset.x, velocity.x);
 
-        <div className="relative overflow-hidden">
-          <motion.div
-            className="flex gap-6"
-            animate={{
-              x: `-${currentIndex * (100 / itemsToShow)}%`
-            }}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          >
-            {destinations.map((destination) => (
-              <motion.div
-                key={destination.id}
-                className="relative flex-none w-[calc(100%/3-1rem)] h-[500px] rounded-2xl overflow-hidden group cursor-pointer"
-                whileHover={{ scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            if (swipe < -swipeConfidenceThreshold) {
+              paginate(1);
+            } else if (swipe > swipeConfidenceThreshold) {
+              paginate(-1);
+            }
+          }}
+          className="absolute inset-0"
+        >
+          <div className="relative h-full w-full">
+            <Image
+              src={destinations[currentIndex].image}
+              alt={destinations[currentIndex].title}
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-black/30" />
+            <div className="absolute inset-0 flex flex-col justify-center items-center text-white text-center p-4">
+              <motion.h2
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.2 }}
+                className="text-4xl md:text-6xl font-bold mb-4 tracking-wider"
               >
-                <Image
-                  src={destination.image}
-                  alt={destination.title}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                  <h3 className="text-2xl font-playfair font-bold mb-2">
-                    {destination.title}
-                  </h3>
-                  <p className="text-sm opacity-90 mb-2">
-                    {destination.subtitle}
-                  </p>
-                  <div className="space-y-1">
-                    <p className="text-xs font-medium">
-                      Lugares destacados: {destination.highlights.join(' • ')}
-                    </p>
-                    {destination.bestTime && (
-                      <p className="text-xs font-medium">
-                        Mejor época: {destination.bestTime}
-                      </p>
-                    )}
-                  </div>
-                </div>
+                {destinations[currentIndex].title}
+              </motion.h2>
+              <motion.p
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.3 }}
+                className="text-xl md:text-2xl max-w-2xl mb-8"
+              >
+                {destinations[currentIndex].description}
+              </motion.p>
+              <motion.div
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.4 }}
+              >
+                <Link
+                  href={destinations[currentIndex].href}
+                  className="bg-white text-black px-8 py-3 rounded-full font-bold hover:bg-opacity-90 transition-all"
+                >
+                  Explorar
+                </Link>
               </motion.div>
-            ))}
-          </motion.div>
-        </div>
+            </div>
+          </div>
+        </motion.div>
+      </AnimatePresence>
+
+      {/* Controles de navegación */}
+      <button
+        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 p-3 rounded-full text-white transition-all z-10"
+        onClick={() => paginate(-1)}
+      >
+        <FiChevronLeft size={24} />
+      </button>
+      <button
+        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 p-3 rounded-full text-white transition-all z-10"
+        onClick={() => paginate(1)}
+      >
+        <FiChevronRight size={24} />
+      </button>
+
+      {/* Indicadores de página */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
+        {destinations.map((_, index) => (
+          <button
+            key={index}
+            className={`w-2 h-2 rounded-full transition-all ${
+              index === currentIndex ? 'bg-white w-8' : 'bg-white/50'
+            }`}
+            onClick={() => {
+              setDirection(index > currentIndex ? 1 : -1);
+              setCurrentIndex(index);
+            }}
+          />
+        ))}
       </div>
     </div>
   );
