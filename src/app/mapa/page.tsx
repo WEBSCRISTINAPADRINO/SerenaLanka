@@ -4,7 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import SriLankaOutlineMap from '@/components/SriLankaOutlineMap';
+import SriLankaMap from '@/components/SriLankaMap';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 
 const categories = [
@@ -76,8 +76,8 @@ export default function MapaPage() {
       {/* Mapa Interactivo */}
       <section className="py-12 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-            <SriLankaOutlineMap />
+          <div className="bg-white rounded-xl shadow-lg overflow-hidden p-6">
+            <SriLankaMap />
           </div>
         </div>
       </section>
