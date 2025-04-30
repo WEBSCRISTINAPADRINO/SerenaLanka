@@ -67,6 +67,11 @@ export default function Navbar() {
                       </Link>
                     </li>
                     <li>
+                      <Link href="/destinos/costa-oeste" className="block py-1 hover:text-ocean-blue transition-colors">
+                        Costa Oeste
+                      </Link>
+                    </li>
+                    <li>
                       <Link href="/destinos/montanas" className="block py-1 hover:text-ocean-blue transition-colors">
                         Montañas
                       </Link>

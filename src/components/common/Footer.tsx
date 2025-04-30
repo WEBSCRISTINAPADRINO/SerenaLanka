@@ -83,6 +83,7 @@ export default function Footer() {
             <ul className="space-y-2">
               <li><Link href="/destinos/costa-sur" className="text-coconut-white/70 hover:text-coconut-white transition-colors duration-300">Costa Sur</Link></li>
               <li><Link href="/destinos/costa-este" className="text-coconut-white/70 hover:text-coconut-white transition-colors duration-300">Costa Este</Link></li>
+              <li><Link href="/destinos/costa-oeste" className="text-coconut-white/70 hover:text-coconut-white transition-colors duration-300">Costa Oeste</Link></li>
               <li><Link href="/destinos/montanas" className="text-coconut-white/70 hover:text-coconut-white transition-colors duration-300">Montañas</Link></li>
               <li><Link href="/destinos/templos" className="text-coconut-white/70 hover:text-coconut-white transition-colors duration-300">Templos Budistas</Link></li>
               <li><Link href="/destinos/ciudades" className="text-coconut-white/70 hover:text-coconut-white transition-colors duration-300">Ciudades históricas</Link></li>

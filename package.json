@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "download-images": "node scripts/download-wellness-images.js",
+    "download-costa-oeste-images": "ts-node -P scripts/tsconfig.json scripts/download-costa-oeste-images.ts"
   },
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.16.8",
@@ -22,14 +24,16 @@
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@types/google.maps": "^3.58.1",
-    "@types/node": "^20.0.0",
+    "@types/node": "^20.17.32",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
     "autoprefixer": "^10.0.1",
+    "axios": "^1.9.0",
     "eslint": "^8",
     "eslint-config-next": "14.1.0",
     "postcss": "^8",
     "tailwindcss": "^3.3.0",
+    "ts-node": "^10.9.2",
     "typescript": "^5.0.0"
   }
 }

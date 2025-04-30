@@ -2,30 +2,70 @@
 
 ## Estructura del Proyecto
 
-```
-src/
-├── app/                    # Páginas y rutas de Next.js
-│   ├── page.tsx           # Página de inicio con secciones dinámicas
-│   ├── destinos/          # Sección de destinos
-│   │   └── page.tsx       # Página principal de destinos
-│   ├── experiencias/      # Sección de experiencias
-│   │   └── page.tsx       # Página principal de experiencias
-│   └── layout.tsx         # Layout principal
-├── components/            # Componentes reutilizables
-│   ├── common/           # Componentes comunes
-│   ├── home/             # Componentes específicos de la página de inicio
-│   ├── destinos/         # Componentes específicos de destinos
-│   └── experiencias/     # Componentes específicos de experiencias
-├── lib/                  # Utilidades y configuraciones
-└── styles/               # Estilos globales y Tailwind
+### Sección Wellness
+La sección de wellness sigue una arquitectura modular y escalable:
 
-public/
-├── images/               # Imágenes optimizadas
-│   ├── regions/          # Imágenes de regiones
-│   ├── experiences/      # Imágenes de experiencias
-│   └── profiles/         # Imágenes de perfiles
-└── fonts/                # Fuentes personalizadas
-```
+1. **Estructura de Directorios**
+   ```
+   src/
+   ├── app/
+   │   └── wellness/
+   │       ├── page.tsx              # Página principal
+   │       ├── yoga/
+   │       │   └── page.tsx         # Subpágina de yoga
+   │       ├── meditacion/
+   │       │   └── page.tsx         # Subpágina de meditación
+   │       ├── ayurveda/
+   │       │   └── page.tsx         # Subpágina de ayurveda
+   │       └── nutricion/
+   │           └── page.tsx         # Subpágina de nutrición
+   ├── config/
+   │   ├── wellness-metadata.ts     # Configuración de metadatos
+   │   └── wellness-images.ts       # Configuración de imágenes
+   └── public/
+       └── images/
+           └── wellness/            # Imágenes de la sección
+   ```
+
+2. **Configuración**
+   - Metadatos SEO centralizados
+   - Gestión de imágenes optimizada
+   - Scripts de utilidad para mantenimiento
+
+3. **Componentes**
+   - Hero sections reutilizables
+   - Galerías de imágenes
+   - Formularios de contacto
+   - Cards de información
+
+4. **Optimización**
+   - Exportación estática
+   - Optimización de imágenes
+   - Caché configurado
+   - SEO avanzado
+
+### Sección Destinos
+La sección de destinos incluye las siguientes regiones:
+
+1. **Estructura de Directorios**
+   ```
+   src/
+   ├── app/
+   │   └── destinos/
+   │       ├── page.tsx              # Página principal de destinos
+   │       ├── costa-sur/
+   │       │   └── page.tsx         # Costa Sur
+   │       ├── costa-este/
+   │       │   └── page.tsx         # Costa Este
+   │       ├── costa-oeste/
+   │       │   └── page.tsx         # Costa Oeste
+   │       ├── montanas/
+   │       │   └── page.tsx         # Región montañosa
+   │       ├── templos/
+   │       │   └── page.tsx         # Templos budistas
+   │       └── ciudades/
+   │           └── page.tsx         # Ciudades históricas
+   ```
 
 ## Componentes Principales
 

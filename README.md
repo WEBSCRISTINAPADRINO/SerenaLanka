@@ -1,4 +1,4 @@
-# Web de Turismo de Lujo Accesible en Sri Lanka
+# Serena Lanka - Web de Turismo de Lujo Accesible en Sri Lanka
 
 ## Descripción
 Plataforma web inspiradora y guía para viajeros que buscan experiencias de lujo auténtico a buen precio en Sri Lanka.
@@ -34,6 +34,7 @@ src/
 - [Estrategia SEO](docs/SEO_STRATEGY.md)
 - [Herramientas SEO](docs/SEO_TOOLS.md)
 - [Experiencias](docs/EXPERIENCIAS.md)
+- [Configuración Wellness](docs/WELLNESS_SETUP.md)
 
 ## Características Principales
 - Diseño responsive y moderno
@@ -75,6 +76,21 @@ src/
 - Sección de valores añadidos
 - Call to action personalizado
 
+### Wellness
+La sección de wellness incluye las siguientes páginas:
+- `/wellness` - Página principal de wellness
+- `/wellness/yoga` - Retiros y clases de yoga
+- `/wellness/meditacion` - Programas de meditación
+- `/wellness/ayurveda` - Tratamientos ayurvédicos
+- `/wellness/nutricion` - Nutrición y alimentación saludable
+
+Cada página incluye:
+- Metadatos SEO optimizados
+- Galería de imágenes
+- Información detallada
+- Formularios de contacto
+- Enlaces a reservas
+
 ## Desarrollo
 1. Clonar repositorio
 2. Instalar dependencias: `npm install`
@@ -111,3 +127,16 @@ La web implementa una estrategia de monetización basada en:
    - Guías descargables
    - Itinerarios personalizados
    - Acceso a comunidad exclusiva 
+
+### Configuración
+- Next.js 14 con TypeScript
+- Tailwind CSS para estilos
+- Framer Motion para animaciones
+- Optimización de imágenes
+- Exportación estática
+
+### Despliegue
+- GitHub Actions para CI/CD
+- Despliegue automático a FTP
+- Configuración de .htaccess para SEO
+- Redirecciones y caché optimizados 
