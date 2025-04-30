@@ -12,25 +12,21 @@ export default function SriLankaIcon({ className = "w-6 h-6", color = "#2E7D32" 
       className={className}
       fill="none"
       stroke={color}
-      strokeWidth="4"
+      strokeWidth="6"
       strokeLinecap="round"
       strokeLinejoin="round"
     >
-      {/* Forma más precisa de Sri Lanka, como una gota o lágrima */}
+      {/* Forma más precisa de Sri Lanka con la característica forma de lágrima */}
       <path d="
         M 50 20
-        C 45 22, 40 25, 38 30
-        C 35 38, 33 45, 32 50
-        C 30 60, 28 70, 30 80
-        C 32 90, 35 100, 40 110
-        C 45 120, 50 125, 55 128
-        C 60 130, 65 130, 70 128
-        C 75 125, 78 120, 80 115
-        C 82 110, 83 105, 83 100
-        C 83 90, 82 80, 80 70
-        C 78 60, 75 50, 70 40
-        C 65 30, 60 25, 55 22
-        C 53 21, 51 20, 50 20
+        C 42 25, 38 35, 35 45
+        C 32 55, 30 65, 30 75
+        C 30 90, 32 100, 35 110
+        C 40 120, 45 125, 50 130
+        C 55 125, 60 120, 65 110
+        C 68 100, 70 90, 70 75
+        C 70 65, 68 55, 65 45
+        C 62 35, 58 25, 50 20
         Z
       " />
     </svg>
