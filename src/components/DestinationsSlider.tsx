@@ -11,6 +11,8 @@ interface Destination {
   subtitle: string;
   image: string;
   href: string;
+  highlights: string[];
+  bestTime?: string;
 }
 
 const destinations: Destination[] = [
@@ -19,49 +21,63 @@ const destinations: Destination[] = [
     title: 'Costa Sur',
     subtitle: 'Playas paradisíacas y resorts de lujo',
     image: '/images/destinations/costa-sur.jpg',
-    href: '/destinos/costa-sur'
+    href: '/destinos/costa-sur',
+    highlights: ['Galle', 'Mirissa', 'Unawatuna'],
+    bestTime: 'Diciembre a Abril'
   },
   {
     id: 'costa-este',
     title: 'Costa Este',
     subtitle: 'Aguas cristalinas y arrecifes de coral',
     image: '/images/destinations/costa-este.jpg',
-    href: '/destinos/costa-este'
+    href: '/destinos/costa-este',
+    highlights: ['Trincomalee', 'Arugam Bay', 'Pasikuda'],
+    bestTime: 'Mayo a Septiembre'
   },
   {
     id: 'costa-norte',
     title: 'Costa Norte',
     subtitle: 'Historia colonial y playas vírgenes',
     image: '/images/destinations/costa-norte.jpg',
-    href: '/destinos/costa-norte'
+    href: '/destinos/costa-norte',
+    highlights: ['Jaffna', 'Point Pedro', 'Delft Island'],
+    bestTime: 'Mayo a Septiembre'
   },
   {
     id: 'costa-oeste',
     title: 'Costa Oeste',
     subtitle: 'Cultura, comercio y atardeceres',
     image: '/images/destinations/costa-oeste.jpg',
-    href: '/destinos/costa-oeste'
+    href: '/destinos/costa-oeste',
+    highlights: ['Negombo', 'Chilaw', 'Kalpitiya'],
+    bestTime: 'Diciembre a Marzo'
   },
   {
     id: 'montanas',
     title: 'Montañas',
     subtitle: 'Plantaciones de té y senderos místicos',
     image: '/images/destinations/montanas.jpg',
-    href: '/destinos/montanas'
+    href: '/destinos/montanas',
+    highlights: ['Nuwara Eliya', 'Ella', 'Kandy'],
+    bestTime: 'Todo el año'
   },
   {
     id: 'templos',
     title: 'Templos Budistas',
     subtitle: 'Espiritualidad y cultura milenaria',
     image: '/images/destinations/templos.jpg',
-    href: '/destinos/templos-budistas'
+    href: '/destinos/templos-budistas',
+    highlights: ['Dambulla', 'Anuradhapura', 'Polonnaruwa'],
+    bestTime: 'Todo el año'
   },
   {
     id: 'ciudades',
     title: 'Ciudades Históricas',
     subtitle: 'Historia viva y tradiciones',
     image: '/images/destinations/ciudades.jpg',
-    href: '/destinos/ciudades-historicas'
+    href: '/destinos/ciudades-historicas',
+    highlights: ['Colombo', 'Kandy', 'Galle Fort'],
+    bestTime: 'Todo el año'
   }
 ];
 
@@ -132,9 +148,19 @@ const DestinationsSlider = () => {
                   <h3 className="text-2xl font-playfair font-bold mb-2">
                     {destination.title}
                   </h3>
-                  <p className="text-sm opacity-90">
+                  <p className="text-sm opacity-90 mb-2">
                     {destination.subtitle}
                   </p>
+                  <div className="space-y-1">
+                    <p className="text-xs font-medium">
+                      Lugares destacados: {destination.highlights.join(' • ')}
+                    </p>
+                    {destination.bestTime && (
+                      <p className="text-xs font-medium">
+                        Mejor época: {destination.bestTime}
+                      </p>
+                    )}
+                  </div>
                 </div>
               </motion.div>
             ))}
