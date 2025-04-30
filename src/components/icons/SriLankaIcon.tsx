@@ -12,7 +12,7 @@ export default function SriLankaIcon({ className = "w-6 h-6", color = "#2E7D32" 
       className={className}
       fill="none"
       stroke={color}
-      strokeWidth="6"
+      strokeWidth="8"
       strokeLinecap="round"
       strokeLinejoin="round"
     >
