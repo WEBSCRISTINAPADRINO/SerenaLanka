@@ -9,7 +9,7 @@ import Testimonials from '@/components/Testimonials';
 import BlogPreview from '@/components/BlogPreview';
 import Newsletter from '@/components/Newsletter';
 import LuxuryManifesto from '@/components/LuxuryManifesto';
-import RegionsExplorer from '@/components/common/RegionsExplorer';
+import DestinationsSlider from '@/components/DestinationsSlider';
 import TravelerProfiles from '@/components/TravelerProfiles';
 import VerifiedExperiences from '@/components/VerifiedExperiences';
 import CustomItinerary from '@/components/CustomItinerary';
@@ -139,7 +139,7 @@ const HomePage: React.FC = () => {
           >
             Explora Nuestros Destinos
           </motion.h2>
-          <RegionsExplorer regions={regions} />
+          <DestinationsSlider />
         </div>
       </section>
 
