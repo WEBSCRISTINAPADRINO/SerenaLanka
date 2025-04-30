@@ -5,14 +5,14 @@ interface SriLankaIconProps {
   color?: string;
 }
 
-export default function SriLankaIcon({ className = "w-6 h-6", color = "currentColor" }: SriLankaIconProps) {
+export default function SriLankaIcon({ className = "w-6 h-6", color = "#2E7D32" }: SriLankaIconProps) {
   return (
     <svg
       viewBox="0 0 100 150"
       className={className}
       fill="none"
       stroke={color}
-      strokeWidth="2"
+      strokeWidth="4"
       strokeLinecap="round"
       strokeLinejoin="round"
     >

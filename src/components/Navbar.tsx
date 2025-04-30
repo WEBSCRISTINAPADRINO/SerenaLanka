@@ -39,10 +39,10 @@ export default function Navbar() {
             {/* Icono del Mapa */}
             <Link 
               href="/mapa" 
-              className="flex items-center hover:text-ocean-blue transition-colors group"
+              className="flex items-center group"
               title="Mapa Interactivo"
             >
-              <SriLankaIcon className="w-6 h-8 group-hover:scale-110 transition-transform" />
+              <SriLankaIcon className="w-7 h-10 group-hover:scale-110 transition-transform" />
             </Link>
 
             {/* Destinos con Submenú */}
