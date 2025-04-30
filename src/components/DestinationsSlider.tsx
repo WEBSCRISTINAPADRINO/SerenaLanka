@@ -29,6 +29,20 @@ const destinations: Destination[] = [
     href: '/destinos/costa-este'
   },
   {
+    id: 'costa-norte',
+    title: 'Costa Norte',
+    subtitle: 'Historia colonial y playas vírgenes',
+    image: '/images/destinations/costa-norte.jpg',
+    href: '/destinos/costa-norte'
+  },
+  {
+    id: 'costa-oeste',
+    title: 'Costa Oeste',
+    subtitle: 'Cultura, comercio y atardeceres',
+    image: '/images/destinations/costa-oeste.jpg',
+    href: '/destinos/costa-oeste'
+  },
+  {
     id: 'montanas',
     title: 'Montañas',
     subtitle: 'Plantaciones de té y senderos místicos',
