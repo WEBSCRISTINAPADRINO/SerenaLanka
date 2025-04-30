@@ -12,7 +12,7 @@ export default function CostaOestePage() {
       {/* Hero Section */}
       <section className="relative h-[60vh] w-full">
         <Image
-          src="/images/destinos/costa-oeste/colombo-1.jpg"
+          src={costaOesteImages[0].url}
           alt="Costa Oeste de Sri Lanka"
           fill
           className="object-cover"
@@ -121,7 +121,7 @@ export default function CostaOestePage() {
                 className="relative h-80 rounded-lg overflow-hidden group"
               >
                 <Image
-                  src={`/images/destinos/costa-oeste/${destino.id}.jpg`}
+                  src={destino.url}
                   alt={destino.title}
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-110"
