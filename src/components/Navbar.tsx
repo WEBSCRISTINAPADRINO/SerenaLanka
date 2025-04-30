@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import SearchBar from './SearchBar';
+import SriLankaIcon from './icons/SriLankaIcon';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -34,7 +35,16 @@ export default function Navbar() {
           </div>
 
           {/* Menu desktop */}
-          <div className="hidden md:flex space-x-6 font-lato text-sm text-elephant-gray relative">
+          <div className="hidden md:flex items-center space-x-6 font-lato text-sm text-elephant-gray relative">
+            {/* Icono del Mapa */}
+            <Link 
+              href="/mapa" 
+              className="flex items-center hover:text-ocean-blue transition-colors group"
+              title="Mapa Interactivo"
+            >
+              <SriLankaIcon className="w-8 h-8 group-hover:scale-110 transition-transform" />
+            </Link>
+
             {/* Destinos con Submenú */}
             <div className="relative group">
               <button 
