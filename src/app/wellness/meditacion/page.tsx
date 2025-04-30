@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { meditacionImages, type MeditacionImage } from '../../../config/meditacion-images';
+import { meditacionImages, type MeditacionImage } from '@/config/meditacion-images';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 
 export default function MeditacionPage() {
@@ -13,7 +13,7 @@ export default function MeditacionPage() {
       <section className="relative h-[60vh] w-full">
         <Image
           src={meditacionImages[0].url}
-          alt="Meditación en Sri Lanka"
+          alt="Retiro de Meditación en Sri Lanka"
           fill
           className="object-cover"
           priority
@@ -21,7 +21,7 @@ export default function MeditacionPage() {
         <div className="absolute inset-0 bg-black/40" />
         <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
           <h1 className="text-5xl md:text-7xl font-playfair font-bold text-center mb-6">
-            Meditación
+            Meditación en Sri Lanka
           </h1>
           <p className="text-xl md:text-2xl text-center max-w-3xl px-4">
             Encuentra tu paz interior en los lugares más sagrados de Sri Lanka
@@ -53,26 +53,26 @@ export default function MeditacionPage() {
               className="space-y-6"
             >
               <h2 className="text-3xl font-playfair font-bold text-tropical-green">
-                El Arte de la Meditación
+                Descubre la Meditación en Sri Lanka
               </h2>
               <p className="text-lg text-elephant-gray">
-                Sri Lanka, cuna del budismo Theravada, ofrece algunos de los 
-                entornos más propicios para la meditación. Desde antiguos templos 
-                hasta retiros en la naturaleza, encontrarás el espacio perfecto 
-                para profundizar en tu práctica meditativa.
+                Sri Lanka, cuna del budismo Theravada, ofrece un entorno único para 
+                profundizar en tu práctica de meditación. Desde antiguos templos hasta 
+                retiros en la naturaleza, encontrarás el espacio perfecto para cultivar 
+                la paz interior y la claridad mental.
               </p>
               <div className="space-y-4">
                 <h3 className="text-xl font-bold text-elephant-gray">Experiencias Destacadas:</h3>
                 <ul className="list-disc list-inside space-y-2 text-elephant-gray">
-                  <li>Meditación guiada en templos budistas</li>
-                  <li>Retiros de silencio en la naturaleza</li>
-                  <li>Prácticas de mindfulness en entornos únicos</li>
-                  <li>Talleres de meditación con monjes</li>
+                  <li>Retiros de silencio en templos budistas</li>
+                  <li>Meditación guiada por monjes experimentados</li>
+                  <li>Prácticas de mindfulness en la naturaleza</li>
                   <li>Meditación al amanecer en lugares sagrados</li>
+                  <li>Retiros de varios días en la selva</li>
                 </ul>
               </div>
               <div className="space-y-2">
-                <p className="text-elephant-gray"><strong>Duración recomendada:</strong> Mínimo 3 días</p>
+                <p className="text-elephant-gray"><strong>Mejor época:</strong> Todo el año</p>
                 <p className="text-elephant-gray"><strong>Precio medio:</strong> Desde $40/día</p>
               </div>
             </motion.div>
@@ -84,20 +84,21 @@ export default function MeditacionPage() {
               className="bg-gray-100 rounded-lg p-6 shadow-lg"
             >
               <h3 className="text-2xl font-playfair font-bold text-tropical-green mb-4">
-                Reserva tu Experiencia
+                Reserva tu Retiro
               </h3>
               <p className="text-elephant-gray mb-6">
-                Descubre los mejores lugares para meditar en Sri Lanka, desde 
-                templos antiguos hasta retiros en la naturaleza. Todos nuestros 
-                guías son practicantes experimentados y los lugares están 
-                cuidadosamente seleccionados para ofrecerte la mejor experiencia.
+                Encuentra los mejores retiros de meditación en Sri Lanka, desde experiencias 
+                de un día hasta programas intensivos de varias semanas. Alojamiento, 
+                comidas y guía espiritual incluidas.
               </p>
               <a
-                href="https://www.serenalanka.com/contacto"
+                href="https://www.dhamma.org/en/schedules/schasia"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-block bg-golden-sand text-elephant-gray px-6 py-3 rounded-full
                          font-bold hover:bg-sunset-orange hover:text-white transition-all duration-300"
               >
-                Consultar disponibilidad
+                Ver retiros disponibles
               </a>
             </motion.div>
           </div>
@@ -108,7 +109,7 @@ export default function MeditacionPage() {
       <section className="py-16 px-4 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-playfair font-bold text-tropical-green mb-12 text-center">
-            Lugares para Meditar
+            Experiencias de Meditación
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {meditacionImages.map((image: MeditacionImage) => (
@@ -120,7 +121,7 @@ export default function MeditacionPage() {
                 className="relative h-80 rounded-lg overflow-hidden group"
               >
                 <Image
-                  src={`${image.url}?auto=format&fit=crop&w=800&q=80`}
+                  src={image.url}
                   alt={image.title}
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-110"
@@ -150,12 +151,12 @@ export default function MeditacionPage() {
               transition={{ duration: 0.5 }}
               className="bg-white p-6 rounded-lg shadow-md"
             >
-              <h3 className="text-xl font-bold text-tropical-green mb-4">Mente</h3>
+              <h3 className="text-xl font-bold text-tropical-green mb-4">Físicos</h3>
               <ul className="space-y-2 text-elephant-gray">
-                <li>• Reduce el estrés y la ansiedad</li>
-                <li>• Mejora la concentración</li>
-                <li>• Aumenta la claridad mental</li>
-                <li>• Desarrolla la consciencia</li>
+                <li>• Reduce la presión arterial</li>
+                <li>• Mejora el sistema inmunológico</li>
+                <li>• Disminuye el dolor crónico</li>
+                <li>• Mejora la calidad del sueño</li>
               </ul>
             </motion.div>
             <motion.div
@@ -164,12 +165,12 @@ export default function MeditacionPage() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="bg-white p-6 rounded-lg shadow-md"
             >
-              <h3 className="text-xl font-bold text-tropical-green mb-4">Cuerpo</h3>
+              <h3 className="text-xl font-bold text-tropical-green mb-4">Mentales</h3>
               <ul className="space-y-2 text-elephant-gray">
-                <li>• Reduce la presión arterial</li>
-                <li>• Mejora el sistema inmunológico</li>
-                <li>• Alivia tensiones musculares</li>
-                <li>• Promueve un sueño reparador</li>
+                <li>• Reduce el estrés y la ansiedad</li>
+                <li>• Mejora la concentración</li>
+                <li>• Aumenta la claridad mental</li>
+                <li>• Desarrolla la resiliencia</li>
               </ul>
             </motion.div>
             <motion.div
@@ -178,11 +179,11 @@ export default function MeditacionPage() {
               transition={{ duration: 0.5, delay: 0.4 }}
               className="bg-white p-6 rounded-lg shadow-md"
             >
-              <h3 className="text-xl font-bold text-tropical-green mb-4">Espíritu</h3>
+              <h3 className="text-xl font-bold text-tropical-green mb-4">Espirituales</h3>
               <ul className="space-y-2 text-elephant-gray">
                 <li>• Profundiza la conexión interior</li>
                 <li>• Cultiva la compasión</li>
-                <li>• Desarrolla la paciencia</li>
+                <li>• Desarrolla la sabiduría</li>
                 <li>• Fomenta la paz interior</li>
               </ul>
             </motion.div>

@@ -1,17 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  output: 'export',
   images: {
-    domains: ['images.unsplash.com'],
+    unoptimized: true,
   },
-  async rewrites() {
-    return [
-      {
-        source: '/destinos/:path*',
-        destination: '/destinos/:path*',
-      },
-    ]
-  },
+  trailingSlash: true,
 }
 
 module.exports = nextConfig 

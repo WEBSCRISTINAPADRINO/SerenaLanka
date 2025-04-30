@@ -6,34 +6,27 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 
-const wellnessExperiences = [
+const wellnessCategories = [
   {
     id: 'yoga',
     title: 'Yoga',
-    description: 'Encuentra tu equilibrio interior con nuestras experiencias de yoga',
-    image: '/images/wellness/yoga/hero.jpg',
+    description: 'Descubre el poder transformador del yoga en los lugares más sagrados de Sri Lanka',
+    image: '/images/wellness/yoga/yoga-hero.jpg',
     href: '/wellness/yoga'
   },
   {
-    id: 'ayurveda',
-    title: 'Ayurveda',
-    description: 'Descubre la sabiduría milenaria de la medicina tradicional',
-    image: '/images/wellness/ayurveda/ayurveda-spa.jpg',
-    href: '/wellness/ayurveda'
-  },
-  {
-    id: 'meditation',
+    id: 'meditacion',
     title: 'Meditación',
-    description: 'Alcanza la paz mental en entornos únicos',
-    image: '/images/wellness/meditation/hero.jpg',
-    href: '/wellness/meditation'
+    description: 'Encuentra tu paz interior en los templos y retiros de meditación',
+    image: '/images/wellness/meditacion/retiro-silencio.jpg',
+    href: '/wellness/meditacion'
   },
   {
-    id: 'spa',
-    title: 'Spa & Masajes',
-    description: 'Relájate con tratamientos tradicionales y modernos',
-    image: '/images/wellness/spa/hero.jpg',
-    href: '/wellness/spa'
+    id: 'nutricion',
+    title: 'Nutrición Ayurveda',
+    description: 'Explora la sabiduría de la alimentación ayurvédica tradicional',
+    image: '/images/wellness/nutricion/cocina-ayurveda.jpg',
+    href: '/wellness/nutricion'
   }
 ];
 
@@ -52,10 +45,10 @@ export default function WellnessPage() {
         <div className="absolute inset-0 bg-black/40" />
         <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
           <h1 className="text-5xl md:text-7xl font-playfair font-bold text-center mb-6">
-            Wellness
+            Wellness en Sri Lanka
           </h1>
           <p className="text-xl md:text-2xl text-center max-w-3xl px-4">
-            Experiencias de bienestar únicas en el paraíso
+            Descubre el poder transformador de las prácticas ancestrales
           </p>
         </div>
       </section>
@@ -72,38 +65,53 @@ export default function WellnessPage() {
         </div>
       </div>
 
-      {/* Experiencias de Wellness */}
+      {/* Introducción */}
       <section className="py-16 px-4 bg-coconut-white">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-playfair font-bold text-tropical-green text-center mb-12">
-            Experiencias de Bienestar
-          </h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            {wellnessExperiences.map((experience) => (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-center max-w-3xl mx-auto"
+          >
+            <h2 className="text-3xl font-playfair font-bold text-tropical-green mb-6">
+              Bienestar Integral en Sri Lanka
+            </h2>
+            <p className="text-lg text-elephant-gray">
+              Sri Lanka es un destino único para el bienestar, donde las antiguas tradiciones 
+              se encuentran con la naturaleza exuberante. Descubre cómo el yoga, la meditación 
+              y la nutrición ayurvédica pueden transformar tu vida.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Categorías */}
+      <section className="py-16 px-4 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {wellnessCategories.map((category, index) => (
               <motion.div
-                key={experience.id}
+                key={category.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="relative group"
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="relative h-96 rounded-lg overflow-hidden group"
               >
-                <Link href={experience.href}>
-                  <div className="relative h-96 rounded-lg overflow-hidden">
-                    <Image
-                      src={experience.image}
-                      alt={experience.title}
-                      fill
-                      className="object-cover transition-transform duration-300 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-black/40 opacity-100 group-hover:opacity-60 transition-opacity duration-300" />
-                    <div className="absolute inset-0 p-8 flex flex-col justify-end text-white">
-                      <h3 className="text-3xl font-playfair font-bold mb-3">
-                        {experience.title}
-                      </h3>
-                      <p className="text-lg opacity-90">
-                        {experience.description}
-                      </p>
-                    </div>
+                <Image
+                  src={category.image}
+                  alt={category.title}
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <Link href={category.href}>
+                  <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                    <h3 className="text-2xl font-playfair font-bold mb-4">{category.title}</h3>
+                    <p className="text-center">{category.description}</p>
+                    <span className="mt-4 inline-block bg-golden-sand text-elephant-gray px-6 py-2 rounded-full font-bold">
+                      Explorar
+                    </span>
                   </div>
                 </Link>
               </motion.div>
@@ -112,11 +120,11 @@ export default function WellnessPage() {
         </div>
       </section>
 
-      {/* Sección de Beneficios */}
-      <section className="py-16 px-4 bg-gray-50">
+      {/* Beneficios */}
+      <section className="py-16 px-4 bg-coconut-white">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-playfair font-bold text-tropical-green text-center mb-12">
-            ¿Por qué elegir Sri Lanka para tu retiro de bienestar?
+          <h2 className="text-3xl font-playfair font-bold text-tropical-green mb-12 text-center">
+            Beneficios del Wellness en Sri Lanka
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             <motion.div
@@ -125,11 +133,13 @@ export default function WellnessPage() {
               transition={{ duration: 0.5 }}
               className="bg-white p-6 rounded-lg shadow-md"
             >
-              <h3 className="text-xl font-bold text-tropical-green mb-4">Tradición Milenaria</h3>
-              <p className="text-elephant-gray">
-                Sri Lanka es cuna de antiguas prácticas de bienestar, desde el Ayurveda 
-                hasta la meditación budista, ofreciendo experiencias auténticas y transformadoras.
-              </p>
+              <h3 className="text-xl font-bold text-tropical-green mb-4">Cuerpo</h3>
+              <ul className="space-y-2 text-elephant-gray">
+                <li>• Mejora la flexibilidad y fuerza</li>
+                <li>• Equilibra el sistema nervioso</li>
+                <li>• Fortalece el sistema inmunológico</li>
+                <li>• Promueve un peso saludable</li>
+              </ul>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -137,11 +147,13 @@ export default function WellnessPage() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="bg-white p-6 rounded-lg shadow-md"
             >
-              <h3 className="text-xl font-bold text-tropical-green mb-4">Entorno Natural</h3>
-              <p className="text-elephant-gray">
-                Desde playas paradisíacas hasta montañas serenas, cada ubicación 
-                ofrece un escenario perfecto para reconectar con uno mismo.
-              </p>
+              <h3 className="text-xl font-bold text-tropical-green mb-4">Mente</h3>
+              <ul className="space-y-2 text-elephant-gray">
+                <li>• Reduce el estrés y la ansiedad</li>
+                <li>• Mejora la concentración</li>
+                <li>• Aumenta la claridad mental</li>
+                <li>• Desarrolla la resiliencia</li>
+              </ul>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -149,11 +161,13 @@ export default function WellnessPage() {
               transition={{ duration: 0.5, delay: 0.4 }}
               className="bg-white p-6 rounded-lg shadow-md"
             >
-              <h3 className="text-xl font-bold text-tropical-green mb-4">Expertos Cualificados</h3>
-              <p className="text-elephant-gray">
-                Maestros de yoga, doctores ayurvédicos y terapeutas experimentados 
-                te guiarán en tu viaje hacia el bienestar.
-              </p>
+              <h3 className="text-xl font-bold text-tropical-green mb-4">Espíritu</h3>
+              <ul className="space-y-2 text-elephant-gray">
+                <li>• Profundiza la conexión interior</li>
+                <li>• Cultiva la compasión</li>
+                <li>• Desarrolla la sabiduría</li>
+                <li>• Fomenta la paz interior</li>
+              </ul>
             </motion.div>
           </div>
         </div>
