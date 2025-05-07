@@ -62,8 +62,8 @@ const SriLankaMap = () => {
         .addTo(map.current!);
 
       // Añadir hover effect
-      marker.on('mouseover', function(e) {
-        this.openPopup();
+      marker.on('mouseover', (e) => {
+        marker.openPopup();
       });
     });
 
