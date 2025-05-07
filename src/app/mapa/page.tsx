@@ -4,8 +4,10 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import SriLankaMap from '@/components/SriLankaMap';
+import dynamic from 'next/dynamic';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
+
+const SriLankaMap = dynamic(() => import('@/components/SriLankaMap'), { ssr: false });
 
 const categories = [
   {
