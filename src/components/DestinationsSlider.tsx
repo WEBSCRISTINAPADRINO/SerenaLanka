@@ -9,35 +9,35 @@ const destinations = [
   {
     id: 'costa-sur',
     title: 'DESCUBRE LA COSTA SUR',
-    image: '/images/destinos/costa-sur/galle-1.jpg',
+    image: 'https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=800&q=80', // Playa de Unawatuna
     href: '/destinos/costa-sur',
     description: 'Playas paradisíacas, fortalezas coloniales y avistamiento de ballenas'
   },
   {
     id: 'costa-este',
     title: 'EXPLORA LA COSTA ESTE',
-    image: '/images/destinos/costa-este/trincomalee-1.jpg',
+    image: 'https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&w=800&q=80', // Playa de Trincomalee
     href: '/destinos/costa-este',
     description: 'Aguas cristalinas y arrecifes de coral vírgenes'
   },
   {
     id: 'costa-norte',
     title: 'CONOCE LA COSTA NORTE',
-    image: '/images/destinos/costa-norte/jaffna-1.jpg',
+    image: 'https://images.unsplash.com/photo-1501179691627-eeaa65ea017c?auto=format&fit=crop&w=800&q=80', // Jaffna
     href: '/destinos/costa-norte',
     description: 'Cultura tamil y templos milenarios'
   },
   {
     id: 'costa-oeste',
     title: 'VIVE LA COSTA OESTE',
-    image: '/images/destinos/costa-oeste/colombo-1.jpg',
+    image: 'https://images.unsplash.com/photo-1596895111956-bf1cf0599ce5?auto=format&fit=crop&w=800&q=80', // Negombo
     href: '/destinos/costa-oeste',
     description: 'Modernidad y tradición en perfecta armonía'
   },
   {
     id: 'montanas',
     title: 'AVENTÚRATE EN LAS MONTAÑAS',
-    image: '/images/destinos/montanas/ella-1.jpg',
+    image: 'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?auto=format&fit=crop&w=800&q=80', // Plantaciones de té en Ella
     href: '/destinos/montanas',
     description: 'Plantaciones de té y paisajes de ensueño'
   }
