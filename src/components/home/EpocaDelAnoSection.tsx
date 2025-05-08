@@ -32,7 +32,7 @@ const epocas = [
 const EpocaDelAnoSection: React.FC<EpocaDelAnoSectionProps> = ({ onSelectEpoca }) => (
   <section className="py-12 bg-coconut-white">
     <h2 className="text-3xl font-playfair font-bold text-tropical-green text-center mb-8">
-      ¿En qué época del año quieres viajar?
+      ¿En qué época del año quieres viajar? (test)
     </h2>
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
       {epocas.map(epoca => (
