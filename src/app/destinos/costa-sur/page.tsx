@@ -6,6 +6,13 @@ import { motion } from 'framer-motion';
 import { regions, type Region } from '@/config/data';
 import { costaSurImages, type CostaSurImage } from '@/config/costa-sur-images';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
+import CostaSurExplorer from '@/components/destinos/CostaSurExplorer';
+import Hero from '@/components/Hero';
+
+export const metadata = {
+  title: 'Costa Sur de Sri Lanka | Serena Lanka',
+  description: 'Descubre las mejores playas, templos y experiencias en la Costa Sur de Sri Lanka. Desde el histórico Fuerte de Galle hasta las playas paradisíacas de Mirissa.',
+};
 
 export default function CostaSurPage() {
   const region = regions.find((r: Region) => r.id === 'costa-sur');
@@ -19,129 +26,69 @@ export default function CostaSurPage() {
   }
 
   return (
-    <main className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative h-[60vh] w-full">
-        <Image
-          src={region.image}
-          alt={region.name}
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-black/40" />
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
-          <h1 className="text-5xl md:text-7xl font-playfair font-bold text-center mb-6">
-            {region.name}
-          </h1>
-          <p className="text-xl md:text-2xl text-center max-w-3xl px-4">
-            {region.description}
-          </p>
-        </div>
-      </section>
-
-      {/* Breadcrumbs */}
-      <div className="bg-coconut-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 py-3">
-          <Breadcrumbs
-            items={[
-              { label: 'Inicio', href: '/' },
-              { label: 'Destinos', href: '/destinos' },
-              { label: region.name, href: `/destinos/costa-sur` }
-            ]}
-          />
-        </div>
-      </div>
-
-      {/* Información Principal */}
-      <section className="py-16 px-4 bg-coconut-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="space-y-6"
-            >
-              <h2 className="text-3xl font-playfair font-bold text-tropical-green">
-                Descubre la Costa Sur
-              </h2>
-              <p className="text-lg text-elephant-gray">
-                La Costa Sur de Sri Lanka es un paraíso tropical donde las playas de arena dorada 
-                se encuentran con las aguas turquesas del Océano Índico. Desde el histórico 
-                Fuerte de Galle hasta las playas surferas de Weligama, cada rincón ofrece una 
-                experiencia única de lujo accesible y autenticidad.
-              </p>
-              <div className="space-y-4">
-                <h3 className="text-xl font-bold text-elephant-gray">Destacados:</h3>
-                <ul className="list-disc list-inside space-y-2 text-elephant-gray">
-                  {region.highlights.map((highlight: string) => (
-                    <li key={highlight}>{highlight}</li>
-                  ))}
-                </ul>
-              </div>
-              <div className="space-y-2">
-                <p className="text-elephant-gray"><strong>Mejor época:</strong> {region.bestTime}</p>
-                <p className="text-elephant-gray"><strong>Precio medio:</strong> {region.price}</p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-gray-100 rounded-lg p-6 shadow-lg"
-            >
-              <h3 className="text-2xl font-playfair font-bold text-tropical-green mb-4">
-                Reserva tu estancia
-              </h3>
-              <p className="text-elephant-gray mb-6">
-                Encuentra los mejores hoteles boutique y resorts de lujo en la Costa Sur 
-                de Sri Lanka. Desde villas frente al mar hasta hoteles históricos en Galle.
-              </p>
-              <a
-                href={region.affiliateLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block bg-golden-sand text-elephant-gray px-6 py-3 rounded-full
-                         font-bold hover:bg-sunset-orange hover:text-white transition-all duration-300"
-              >
-                Ver alojamientos
-              </a>
-            </motion.div>
+    <main>
+      <Hero
+        title="Costa Sur de Sri Lanka"
+        subtitle="Playas paradisíacas y resorts de lujo"
+        backgroundImage="/images/destinos/costa-sur/hero.jpg"
+        ctaText="Explorar Destinos"
+        ctaLink="#explorador"
+      />
+      
+      <section className="py-12 bg-coconut-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="prose prose-lg max-w-none">
+            <h2 className="text-3xl font-playfair font-bold text-tropical-green mb-6">
+              Descubre la Costa Sur
+            </h2>
+            <p className="text-gray-600 mb-6">
+              La Costa Sur de Sri Lanka es un paraíso tropical donde las playas de arena dorada se encuentran con las aguas turquesas del Océano Índico. Desde el histórico Fuerte de Galle hasta las playas surferas de Weligama, cada rincón ofrece una experiencia única de lujo accesible y autenticidad.
+            </p>
+            <p className="text-gray-600 mb-6">
+              Esta región combina perfectamente la riqueza cultural con la belleza natural, ofreciendo desde templos antiguos hasta modernos resorts de lujo, todo ello manteniendo un equilibrio perfecto entre tradición y comodidad.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Galería de Imágenes */}
-      <section className="py-16 px-4 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-playfair font-bold text-tropical-green mb-12 text-center">
-            Explora la Costa Sur
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {costaSurImages.map((image: CostaSurImage) => (
-              <motion.div
-                key={image.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="relative h-80 rounded-lg overflow-hidden group"
-              >
-                <Image
-                  src={`${image.url}?auto=format&fit=crop&w=800&q=80`}
-                  alt={image.title}
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                  <h3 className="text-xl font-bold mb-2">{image.title}</h3>
-                  <p className="text-sm">{image.description}</p>
-                  <p className="text-xs mt-2 opacity-75">Foto por: {image.credit}</p>
-                </div>
-              </motion.div>
-            ))}
+      <section id="explorador" className="py-12">
+        <CostaSurExplorer />
+      </section>
+
+      <section className="py-12 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="prose prose-lg max-w-none">
+            <h2 className="text-3xl font-playfair font-bold text-tropical-green mb-6">
+              Planifica tu Visita
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div>
+                <h3 className="text-xl font-bold text-elephant-gray mb-4">
+                  Mejor Época para Visitar
+                </h3>
+                <p className="text-gray-600 mb-4">
+                  La mejor época para visitar la Costa Sur es de diciembre a abril, cuando el clima es seco y las temperaturas son agradables. Durante estos meses, podrás disfrutar de:
+                </p>
+                <ul className="list-disc list-inside text-gray-600">
+                  <li>Avistamiento de ballenas en Mirissa</li>
+                  <li>Condiciones ideales para surf</li>
+                  <li>Playas con aguas cristalinas</li>
+                  <li>Festivales culturales locales</li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-elephant-gray mb-4">
+                  Consejos de Viaje
+                </h3>
+                <ul className="list-disc list-inside text-gray-600">
+                  <li>Reserva con anticipación durante temporada alta</li>
+                  <li>Lleva protector solar y repelente de mosquitos</li>
+                  <li>Respeta las costumbres locales al visitar templos</li>
+                  <li>Considera alquilar una moto para mayor libertad</li>
+                  <li>Prueba la gastronomía local en los mercados</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </section>

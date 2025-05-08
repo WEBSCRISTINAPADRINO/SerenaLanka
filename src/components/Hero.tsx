@@ -1,57 +1,68 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { siteImages } from '@/config/images';
 
-interface HeroProps {
+export interface HeroProps {
   title: string;
   subtitle: string;
-  image?: string;
-  height?: string;
-  className?: string;
+  backgroundImage: string;
+  ctaText?: string;
+  ctaLink?: string;
 }
 
 const Hero: React.FC<HeroProps> = ({
   title,
   subtitle,
-  image = siteImages.hero.main.src,
-  height = 'h-[70vh]',
-  className = ''
+  backgroundImage,
+  ctaText,
+  ctaLink
 }) => {
-  const [imageError, setImageError] = useState(false);
-
   return (
-    <section className={`relative ${height} flex items-center justify-center ${className}`}>
-      <div className="absolute inset-0">
-        <Image
-          src={imageError ? siteImages.default.src : image}
-          alt={title}
-          fill
-          className="object-cover"
-          priority
-          sizes="100vw"
-          onError={() => setImageError(true)}
-        />
-        <div className="absolute inset-0 bg-elephant-gray/40" />
-      </div>
-      <div className="relative text-center text-coconut-white z-10 max-w-4xl mx-auto px-4">
+    <section className="relative h-[60vh] w-full">
+      <Image
+        src={backgroundImage}
+        alt={title}
+        fill
+        className="object-cover"
+        priority
+      />
+      <div className="absolute inset-0 bg-black/40" />
+      <div className="absolute inset-0 flex flex-col items-center justify-center text-white px-4">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="font-playfair text-4xl md:text-5xl lg:text-6xl mb-6"
+          transition={{ duration: 0.5 }}
+          className="text-4xl md:text-6xl lg:text-7xl font-playfair font-bold text-center mb-6"
         >
           {title}
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="text-lg md:text-xl mb-8"
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="text-xl md:text-2xl text-center max-w-3xl mb-8"
         >
           {subtitle}
         </motion.p>
+        {ctaText && ctaLink && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
+            <Link
+              href={ctaLink}
+              className="inline-block bg-golden-sand text-elephant-gray px-8 py-4 rounded-full
+                       font-bold hover:bg-sunset-orange hover:text-white transition-all duration-300
+                       text-lg"
+            >
+              {ctaText}
+            </Link>
+          </motion.div>
+        )}
       </div>
     </section>
   );

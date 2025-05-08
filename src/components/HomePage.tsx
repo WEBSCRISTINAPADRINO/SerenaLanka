@@ -16,6 +16,7 @@ import CustomItinerary from '@/components/CustomItinerary';
 import RecommendedProducts from '@/components/RecommendedProducts';
 import { yalaImages } from '@/config/images';
 import { Region, TravelerProfile, VerifiedExperience, Image } from '@/types/components';
+import EpocaDelAnoSection from './home/EpocaDelAnoSection';
 
 // Datos de las regiones
 const regions: Region[] = [
@@ -131,6 +132,15 @@ const galleryImages: Image[] = yalaImages.galeria.map(img => ({
 }));
 
 const HomePage: React.FC = () => {
+  // Estado para la época seleccionada (en el futuro puede usarse para filtrar destinos, experiencias, etc.)
+  const [epocaSeleccionada, setEpocaSeleccionada] = React.useState<string | null>(null);
+
+  const handleSelectEpoca = (epoca: string) => {
+    setEpocaSeleccionada(epoca);
+    // Aquí puedes implementar la lógica de filtrado global
+    console.log('Época seleccionada:', epoca);
+  };
+
   return (
     <div className="min-h-screen">
       <Hero 
@@ -140,6 +150,9 @@ const HomePage: React.FC = () => {
         ctaText="Explora Destinos"
         ctaLink="/destinos"
       />
+
+      {/* Sección Época del Año */}
+      <EpocaDelAnoSection onSelectEpoca={handleSelectEpoca} />
       
       <section className="py-20 px-4 bg-coconut-white">
         <div className="max-w-7xl mx-auto">
