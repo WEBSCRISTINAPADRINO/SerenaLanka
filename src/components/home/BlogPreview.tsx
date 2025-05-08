@@ -2,105 +2,102 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const blogPosts = [
   {
-    title: "10 templos budistas que te harán parar y sentir",
-    excerpt: "Descubre los templos más impactantes de Sri Lanka, donde la espiritualidad se encuentra con la arquitectura milenaria.",
-    image: "/images/blog/temples.jpg",
-    category: "Cultura y Espiritualidad",
-    readTime: "8 min"
+    id: 1,
+    title: 'Guía completa para tu safari en Yala',
+    excerpt: 'Todo lo que necesitas saber para vivir la mejor experiencia de safari en Sri Lanka',
+    image: '/images/blog/yala-safari.jpg',
+    date: '15 Marzo 2024',
+    readTime: '5 min',
+    category: 'Naturaleza'
+  },
+  // Comentamos temporalmente las cards que causan errores 404
+  /*
+  {
+    id: 2,
+    title: 'Los mejores retiros de yoga en Sri Lanka',
+    excerpt: 'Descubre los lugares más espirituales para practicar yoga en la isla',
+    image: '/images/blog/yoga-retreats.jpg',
+    date: '10 Marzo 2024',
+    readTime: '4 min',
+    category: 'Wellness'
   },
   {
-    title: "Guía definitiva para viajar solo por Sri Lanka",
-    excerpt: "Todo lo que necesitas saber para una experiencia segura y transformadora en solitario.",
-    image: "/images/blog/solo-travel.jpg",
-    category: "Viajes en Solitario",
-    readTime: "10 min"
-  },
-  {
-    title: "Las playas secretas de Sri Lanka",
-    excerpt: "Descubre las playas menos conocidas donde podrás surfear y meditar en completa tranquilidad.",
-    image: "/images/blog/secret-beaches.jpg",
-    category: "Playas y Naturaleza",
-    readTime: "6 min"
+    id: 3,
+    title: 'Fotografía en Sri Lanka: Guía para principiantes',
+    excerpt: 'Consejos y lugares imprescindibles para capturar la esencia de Sri Lanka',
+    image: '/images/blog/camera.jpg',
+    date: '5 Marzo 2024',
+    readTime: '6 min',
+    category: 'Fotografía'
   }
+  */
 ];
 
 export default function BlogPreview() {
   return (
-    <section className="py-20 bg-coconut-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="font-playfair text-3xl md:text-4xl text-elephant-gray mb-6">
-            Inspiración para tu viaje
+    <section className="py-16 bg-gradient-to-b from-white to-gray-50">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-playfair font-bold text-gray-900 mb-4">
+            Descubre Sri Lanka
           </h2>
-          <p className="text-elephant-gray/80 text-lg max-w-2xl mx-auto">
-            Historias, guías y consejos para hacer de tu viaje una experiencia única
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Historias, consejos y experiencias para inspirar tu próximo viaje
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogPosts.map((post, index) => (
-            <motion.article
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.2 }}
-              className="group"
-            >
-              <Link href="/blog/[slug]" className="block">
-                <div className="relative aspect-[16/9] mb-4 overflow-hidden rounded-lg">
-                  <img
-                    src={post.image}
-                    alt={post.title}
-                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-elephant-gray/60 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <span className="text-coconut-white text-sm font-medium">
-                      {post.category}
-                    </span>
-                  </div>
+          {blogPosts.map((post) => (
+            <article key={post.id} className="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105">
+              <div className="relative h-48">
+                <Image
+                  src={post.image}
+                  alt={post.title}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6">
+                <div className="flex items-center gap-4 text-sm text-gray-500 mb-3">
+                  <span>{post.date}</span>
+                  <span>•</span>
+                  <span>{post.readTime}</span>
                 </div>
-                <h3 className="font-playfair text-xl text-elephant-gray mb-2 group-hover:text-tropical-green transition-colors duration-300">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
                   {post.title}
                 </h3>
-                <p className="text-elephant-gray/70 mb-4">
+                <p className="text-gray-600 mb-4">
                   {post.excerpt}
                 </p>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-elephant-gray/60">
-                    {post.readTime} de lectura
-                  </span>
-                  <span className="text-tropical-green group-hover:translate-x-1 transition-transform duration-300">
-                    Leer más →
-                  </span>
-                </div>
-              </Link>
-            </motion.article>
+                <Link 
+                  href={`/blog/${post.id}`}
+                  className="inline-flex items-center text-tropical-green hover:text-tropical-green/80 transition-colors"
+                >
+                  Leer más
+                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              </div>
+            </article>
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mt-12"
-        >
-          <Link
+        <div className="text-center mt-12">
+          <Link 
             href="/blog"
-            className="inline-block px-8 py-3 bg-tropical-green text-coconut-white rounded-full hover:bg-tropical-green/90 transition-colors duration-300"
+            className="inline-flex items-center px-6 py-3 bg-tropical-green text-white rounded-full hover:bg-tropical-green/90 transition-colors"
           >
             Ver todos los artículos
+            <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
           </Link>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
