@@ -16,7 +16,7 @@ import CustomItinerary from '@/components/CustomItinerary';
 import RecommendedProducts from '@/components/RecommendedProducts';
 import { yalaImages } from '@/config/images';
 import { Region, TravelerProfile, VerifiedExperience, Image } from '@/types/components';
-import EpocaDelAnoSection from './home/EpocaDelAnoSection';
+import EpocaDelAnoSection from './home/EpocaDelAnoSection2';
 
 // Datos de las regiones
 const regions: Region[] = [
