@@ -1,13 +1,7 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { regions, type Region } from '@/config/data';
-import { costaSurImages, type CostaSurImage } from '@/config/costa-sur-images';
-import Breadcrumbs from '@/components/shared/Breadcrumbs';
-import CostaSurExplorer from '@/components/destinos/CostaSurExplorer';
-import Hero from '@/components/Hero';
+import HeroCostaSur from '@/components/destinos/HeroCostaSur';
 
 export const metadata = {
   title: 'Costa Sur de Sri Lanka | Serena Lanka',
@@ -15,83 +9,56 @@ export const metadata = {
 };
 
 export default function CostaSurPage() {
-  const region = regions.find((r: Region) => r.id === 'costa-sur');
-
-  if (!region) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p className="text-2xl text-elephant-gray">Región no encontrada</p>
-      </div>
-    );
-  }
-
   return (
-    <main>
-      <Hero
-        title="Costa Sur de Sri Lanka"
-        subtitle="Playas paradisíacas y resorts de lujo"
-        backgroundImage="/images/destinos/costa-sur/hero.jpg"
-        ctaText="Explorar Destinos"
-        ctaLink="#explorador"
-      />
-      
-      <section className="py-12 bg-coconut-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="prose prose-lg max-w-none">
-            <h2 className="text-3xl font-playfair font-bold text-tropical-green mb-6">
-              Descubre la Costa Sur
-            </h2>
-            <p className="text-gray-600 mb-6">
-              La Costa Sur de Sri Lanka es un paraíso tropical donde las playas de arena dorada se encuentran con las aguas turquesas del Océano Índico. Desde el histórico Fuerte de Galle hasta las playas surferas de Weligama, cada rincón ofrece una experiencia única de lujo accesible y autenticidad.
-            </p>
-            <p className="text-gray-600 mb-6">
-              Esta región combina perfectamente la riqueza cultural con la belleza natural, ofreciendo desde templos antiguos hasta modernos resorts de lujo, todo ello manteniendo un equilibrio perfecto entre tradición y comodidad.
-            </p>
-          </div>
-        </div>
-      </section>
+    <div className="space-y-12 max-w-7xl mx-auto">
+      {/* Hero visual */}
+      <HeroCostaSur />
 
-      <section id="explorador" className="py-12">
-        <CostaSurExplorer />
-      </section>
-
-      <section className="py-12 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="prose prose-lg max-w-none">
-            <h2 className="text-3xl font-playfair font-bold text-tropical-green mb-6">
-              Planifica tu Visita
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div>
-                <h3 className="text-xl font-bold text-elephant-gray mb-4">
-                  Mejor Época para Visitar
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  La mejor época para visitar la Costa Sur es de diciembre a abril, cuando el clima es seco y las temperaturas son agradables. Durante estos meses, podrás disfrutar de:
-                </p>
-                <ul className="list-disc list-inside text-gray-600">
-                  <li>Avistamiento de ballenas en Mirissa</li>
-                  <li>Condiciones ideales para surf</li>
-                  <li>Playas con aguas cristalinas</li>
-                  <li>Festivales culturales locales</li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-elephant-gray mb-4">
-                  Consejos de Viaje
-                </h3>
-                <ul className="list-disc list-inside text-gray-600">
-                  <li>Reserva con anticipación durante temporada alta</li>
-                  <li>Lleva protector solar y repelente de mosquitos</li>
-                  <li>Respeta las costumbres locales al visitar templos</li>
-                  <li>Considera alquilar una moto para mayor libertad</li>
-                  <li>Prueba la gastronomía local en los mercados</li>
-                </ul>
-              </div>
+      {/* Navegación visual por zonas */}
+      <section id="zonas-costa-sur" className="px-6">
+        <h2 className="text-2xl font-semibold mb-4 text-tropical-green font-playfair">Explora por zonas</h2>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          {["Mirissa", "Unawatuna", "Tangalle", "Galle", "Hiriketiya", "Weligama"].map(zone => (
+            <div key={zone} className="cursor-pointer hover:shadow-xl bg-white rounded-xl p-4 text-center font-semibold border border-golden-sand transition-shadow">
+              {zone}
             </div>
-          </div>
+          ))}
         </div>
       </section>
-    </main>
+
+      {/* Experiencias destacadas */}
+      <section className="space-y-6 px-6">
+        <h2 className="text-2xl font-semibold text-tropical-green font-playfair">Vívelo de verdad</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {[
+            { title: "Avistamiento de ballenas azules y delfines", icon: "🐋" },
+            { title: "Nado con tortugas en aguas cristalinas", icon: "🐢" },
+            { title: "Retiros de yoga frente al mar", icon: "🧘‍♂️" },
+            { title: "Masajes ayurvédicos y tratamientos detox", icon: "💆‍♀️" },
+            { title: "Clases de cocina tradicional cingalesa", icon: "🍲" },
+            { title: "Safaris en Yala y Udawalawe", icon: "🦁" },
+            { title: "Exploración de templos milenarios", icon: "🏯" },
+            { title: "Paseos en barca por manglares y santuarios de aves", icon: "🦜" },
+            { title: "Granja de serpientes tradicionales", icon: "🐍" },
+            { title: "Reserva de Sinharaja: monos y selva tropical", icon: "🐒" },
+          ].map((item, index) => (
+            <div key={index} className="flex items-center p-4 space-x-4 bg-white rounded-xl border border-golden-sand shadow-sm">
+              <span className="text-3xl">{item.icon}</span>
+              <span className="text-base font-medium">{item.title}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* CTA final */}
+      <section className="text-center space-y-4 border-t pt-10 px-6">
+        <h3 className="text-2xl font-semibold font-playfair text-tropical-green">¿Listo para vivirlo tú también?</h3>
+        <p className="text-muted-foreground">Diseña tu viaje ideal o explora más experiencias</p>
+        <div className="flex justify-center gap-4 flex-wrap">
+          <button className="bg-tropical-green hover:bg-tropical-green/90 text-white text-lg font-semibold px-8 py-3 rounded-full shadow-lg transition-colors">Diseña tu viaje</button>
+          <button className="border border-tropical-green text-tropical-green text-lg font-semibold px-8 py-3 rounded-full hover:bg-tropical-green/10 transition-colors">Ver todas las experiencias</button>
+        </div>
+      </section>
+    </div>
   );
 } 
