@@ -23,8 +23,8 @@ const RecommendedProducts = () => {
   const products: Product[] = [
     {
       id: 1,
-      title: 'Guía de Viaje Sri Lanka',
-      description: 'La guía más completa con mapas detallados y consejos locales',
+      title: 'Guía de viaje Sri Lanka 2024',
+      description: 'La guía más completa y actualizada para explorar la isla',
       price: '24.99€',
       image: '/images/products/guide-book.jpg',
       platform: 'amazon',
@@ -32,11 +32,13 @@ const RecommendedProducts = () => {
       rating: 4.8,
       category: 'Libros'
     },
+    // Comentamos temporalmente las cards que causan errores 404
+    /*
     {
       id: 2,
-      title: 'Repelente Natural',
-      description: 'Repelente de mosquitos 100% natural, ideal para climas tropicales',
-      price: '12.99€',
+      title: 'Repelente natural de mosquitos',
+      description: 'Protección efectiva y ecológica para tu viaje',
+      price: '15.99€',
       image: '/images/products/repellent.jpg',
       platform: 'amazon',
       path: '/s?k=repelente+natural+mosquitos',
@@ -45,15 +47,27 @@ const RecommendedProducts = () => {
     },
     {
       id: 3,
-      title: 'Cámara Impermeable',
-      description: 'Cámara compacta resistente al agua para capturar tus aventuras',
-      price: '89.99€',
+      title: 'Libro de cocina de Sri Lanka',
+      description: 'Recetas auténticas para recrear los sabores de la isla',
+      price: '29.99€',
+      image: '/images/products/cuisine.jpg',
+      platform: 'amazon',
+      path: '/s?k=libro+cocina+sri+lanka',
+      rating: 4.9,
+      category: 'Libros'
+    },
+    {
+      id: 4,
+      title: 'Cámara para viajes',
+      description: 'Captura los mejores momentos de tu aventura',
+      price: '199.99€',
       image: '/images/products/camera.jpg',
       platform: 'amazon',
-      path: '/s?k=camara+impermeable+viaje',
+      path: '/s?k=camara+para+viajes',
       rating: 4.7,
       category: 'Electrónica'
     }
+    */
   ];
 
   return (

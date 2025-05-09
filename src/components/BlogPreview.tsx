@@ -3,34 +3,37 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
-const posts = [
+const blogPosts = [
   {
     id: 1,
-    titulo: 'Los 5 Mejores Retiros de Yoga en Sri Lanka',
-    extracto: 'Descubre los lugares más especiales para reconectar con tu ser interior mientras disfrutas de la serenidad de la isla.',
-    imagen: '/images/blog/yoga-retreats.jpg',
-    categoria: 'Wellness',
-    fecha: '15 Mar 2024',
-    tiempo: '5 min'
+    title: 'Guía completa para tu safari en Yala',
+    excerpt: 'Todo lo que necesitas saber para vivir la mejor experiencia de safari en Sri Lanka',
+    image: '/images/blog/yala-safari.jpg',
+    date: '15 Marzo 2024',
+    readTime: '5 min',
+    category: 'Naturaleza'
   },
+  // Comentamos temporalmente las cards que causan errores 404
+  /*
   {
     id: 2,
-    titulo: 'Guía Completa del Safari en Yala',
-    extracto: 'Todo lo que necesitas saber para vivir una experiencia inolvidable observando la vida salvaje en su hábitat natural.',
-    imagen: '/images/blog/yala-safari.jpg',
-    categoria: 'Aventura',
-    fecha: '12 Mar 2024',
-    tiempo: '7 min'
+    title: 'Los mejores retiros de yoga en Sri Lanka',
+    excerpt: 'Descubre los lugares más espirituales para practicar yoga en la isla',
+    image: '/images/blog/yoga-retreats.jpg',
+    date: '10 Marzo 2024',
+    readTime: '4 min',
+    category: 'Wellness'
   },
   {
     id: 3,
-    titulo: 'Secretos de la Gastronomía Cingalesa',
-    extracto: 'Un viaje a través de los sabores, aromas y tradiciones culinarias que hacen única la cocina de Sri Lanka.',
-    imagen: '/images/blog/cuisine.jpg',
-    categoria: 'Cultura',
-    fecha: '10 Mar 2024',
-    tiempo: '6 min'
+    title: 'Fotografía en Sri Lanka: Guía para principiantes',
+    excerpt: 'Consejos y lugares imprescindibles para capturar la esencia de Sri Lanka',
+    image: '/images/blog/cuisine.jpg',
+    date: '5 Marzo 2024',
+    readTime: '6 min',
+    category: 'Fotografía'
   }
+  */
 ];
 
 export default function BlogPreview() {
@@ -52,7 +55,7 @@ export default function BlogPreview() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {posts.map((post, index) => (
+          {blogPosts.map((post, index) => (
             <motion.article
               key={post.id}
               initial={{ opacity: 0, y: 20 }}
@@ -63,30 +66,30 @@ export default function BlogPreview() {
             >
               <div className="relative h-48 overflow-hidden">
                 <img
-                  src={post.imagen}
-                  alt={post.titulo}
+                  src={post.image}
+                  alt={post.title}
                   className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                 />
                 <div className="absolute top-4 left-4">
                   <span className="bg-tropical-green text-white px-3 py-1 rounded-full text-sm font-semibold">
-                    {post.categoria}
+                    {post.category}
                   </span>
                 </div>
               </div>
 
               <div className="p-6">
                 <div className="flex items-center text-sm text-elephant-gray/60 mb-3">
-                  <span>{post.fecha}</span>
+                  <span>{post.date}</span>
                   <span className="mx-2">•</span>
-                  <span>{post.tiempo} lectura</span>
+                  <span>{post.readTime} lectura</span>
                 </div>
 
                 <h3 className="font-playfair text-xl text-elephant-gray mb-3">
-                  {post.titulo}
+                  {post.title}
                 </h3>
 
                 <p className="text-elephant-gray/80 mb-4">
-                  {post.extracto}
+                  {post.excerpt}
                 </p>
 
                 <Link
