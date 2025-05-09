@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import HeroCostaSur from '@/components/destinos/HeroCostaSur';
 
