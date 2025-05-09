@@ -53,8 +53,8 @@ export default function CostaSurPage() {
         <h3 className="text-2xl font-semibold font-playfair text-tropical-green">¿Listo para vivirlo tú también?</h3>
         <p className="text-muted-foreground">Diseña tu viaje ideal o explora más experiencias</p>
         <div className="flex justify-center gap-4 flex-wrap">
-          <button className="bg-tropical-green hover:bg-tropical-green/90 text-white text-lg font-semibold px-8 py-3 rounded-full shadow-lg transition-colors">Diseña tu viaje</button>
-          <button className="border border-tropical-green text-tropical-green text-lg font-semibold px-8 py-3 rounded-full hover:bg-tropical-green/10 transition-colors">Ver todas las experiencias</button>
+          <a href="/planifica" className="bg-tropical-green hover:bg-tropical-green/90 text-white text-lg font-semibold px-8 py-3 rounded-full shadow-lg transition-colors">Diseña tu viaje</a>
+          <a href="/experiencias" className="border border-tropical-green text-tropical-green text-lg font-semibold px-8 py-3 rounded-full hover:bg-tropical-green/10 transition-colors">Ver todas las experiencias</a>
         </div>
       </section>
     </div>
