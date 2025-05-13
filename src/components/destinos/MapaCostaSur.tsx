@@ -112,4 +112,3 @@ export default function MapaCostaSur() {
     </div>
   );
 }
-fix: marcar MapaCostaSur como Client Component).
