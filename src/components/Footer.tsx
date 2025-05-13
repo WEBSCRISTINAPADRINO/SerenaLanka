@@ -71,6 +71,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-coconut-white/10 mt-12 pt-8 text-center text-coconut-white/60">
+          <p className="text-xs mt-2">Mapa base por TUBS, vía <a href="https://commons.wikimedia.org/wiki/File:Sri_Lanka,_administrative_divisions_-_de_-_colored.svg" target="_blank" rel="noopener noreferrer" className="underline hover:text-sunset-orange">Wikimedia Commons</a></p>
           <p>&copy; {new Date().getFullYear()} Sri Lanka Turismo. Todos los derechos reservados.</p>
         </div>
       </div>
