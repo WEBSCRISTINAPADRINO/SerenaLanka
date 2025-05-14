@@ -1,5 +1,4 @@
 'use client';
-
 import React, { useEffect, useRef, useState } from "react";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
@@ -42,6 +41,33 @@ const iconosActividades: Record<string, string> = {
 
 const centerCostaSur: [number, number] = [5.9833, 80.5167]; // Centro aproximado de la Costa Sur
 
+// Leyenda de actividades y slugs para URLs
+const leyendaActividades: { nombre: string; icono: string; slug: string }[] = [
+  { nombre: "Avistamiento de ballenas", icono: "🐋", slug: "avistamiento-ballenas" },
+  { nombre: "Nado con tortugas", icono: "🐢", slug: "nado-tortugas" },
+  { nombre: "Snorkel", icono: "🤿", slug: "snorkel" },
+  { nombre: "Yoga", icono: "🧘‍♂️", slug: "yoga" },
+  { nombre: "Masajes ayurvédicos", icono: "💆", slug: "masajes-ayurvedicos" },
+  { nombre: "Tratamientos de belleza", icono: "🧑‍🦰", slug: "tratamientos-belleza" },
+  { nombre: "Clases de cocina", icono: "🍲", slug: "clases-cocina" },
+  { nombre: "Safari", icono: "🐊", slug: "safari" },
+  { nombre: "Safari en Yala", icono: "🐆", slug: "safari-yala" },
+  { nombre: "Safari en Udawalawe", icono: "🐘", slug: "safari-udawalawe" },
+  { nombre: "Exploración de templos", icono: "🏯", slug: "templos" },
+  { nombre: "Observación de aves", icono: "🦜", slug: "observacion-aves" },
+  { nombre: "Paseos en barco", icono: "🛥️", slug: "paseos-barco" },
+  { nombre: "Granja de serpientes", icono: "🐍", slug: "granja-serpientes" },
+  { nombre: "Reserva de Sinharaja", icono: "🐒", slug: "sinharaja" },
+  { nombre: "Senderismo", icono: "🚶", slug: "senderismo" },
+  { nombre: "Trekking", icono: "🥾", slug: "trekking" },
+  { nombre: "Surf", icono: "🏄‍♂️", slug: "surf" },
+  { nombre: "Pesca", icono: "🎣", slug: "pesca" },
+  { nombre: "Kayak", icono: "🛶", slug: "kayak" },
+  { nombre: "Spa", icono: "🧖", slug: "spa" },
+  { nombre: "Shopping", icono: "🛍️", slug: "shopping" },
+  { nombre: "Gastronomía local", icono: "🍲", slug: "gastronomia-local" },
+];
+
 export default function MapaCostaSur() {
   const mapContainer = useRef<HTMLDivElement | null>(null);
   const map = useRef<L.Map | null>(null);
@@ -80,7 +106,24 @@ export default function MapaCostaSur() {
 
     // Añadir marcadores
     lugaresCostaSur.forEach((lugar) => {
+      const actividades = lugar.actividades || [];
+      const iconos = actividades.map(act => iconosActividades[act] || "").filter(Boolean);
+      const popupHtml = `
+        <div class="p-3">
+          <h3 class="text-lg font-bold text-tropical-green mb-1">${lugar.nombre}</h3>
+          <p class="text-sm text-elephant-gray mb-1">${lugar.tipo}</p>
+          <div class="flex flex-wrap gap-1 mb-2">
+            ${iconos.map(icono => `<span class="text-xl">${icono}</span>`).join(" ")}
+          </div>
+          <p class="text-sm text-elephant-gray mb-1">${lugar.descripcion}</p>
+          ${actividades.length > 0 ? `<ul class="list-disc pl-4 text-sm text-elephant-gray">${actividades.map(act => `<li>${iconosActividades[act] ? iconosActividades[act] + ' ' : ''}${act}</li>`).join('')}</ul>` : ''}
+        </div>
+      `;
       const marker = L.marker([lugar.coordenadas.lat, lugar.coordenadas.lng])
+        .bindPopup(popupHtml, {
+          maxWidth: 320,
+          className: "custom-popup"
+        })
         .addTo(map.current!);
       marker.on("click", () => setLugarSeleccionado(lugar));
       markers.current.push(marker);
