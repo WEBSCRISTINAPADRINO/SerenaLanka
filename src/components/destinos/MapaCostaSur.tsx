@@ -1,114 +1,137 @@
-   'use client';
-import React, { useState } from "react";
+'use client';
 
-const zonas = [
-  {
-    nombre: "Mirissa",
-    left: "68%",
-    top: "82%",
-    icono: "🐋",
-    actividades: "Avistamiento de ballenas, surf, nado con tortugas"
-  },
-  {
-    nombre: "Galle",
-    left: "60%",
-    top: "78%",
-    icono: "🏯",
-    actividades: "Fuerte colonial, compras boutique, gastronomía"
-  },
-  {
-    nombre: "Unawatuna",
-    left: "62%",
-    top: "80%",
-    icono: "🧘‍♂️",
-    actividades: "Yoga, playas, snorkel con tortugas"
-  },
-  {
-    nombre: "Tangalle",
-    left: "80%",
-    top: "88%",
-    icono: "💆‍♀️",
-    actividades: "Spas de lujo, playas tranquilas, observación de aves"
-  },
-  {
-    nombre: "Hiriketiya",
-    left: "77%",
-    top: "90%",
-    icono: "🏄‍♂️",
-    actividades: "Surf, yoga, bares de playa"
-  },
-  {
-    nombre: "Weligama",
-    left: "70%",
-    top: "85%",
-    icono: "🍲",
-    actividades: "Surf, nado con tortugas, clases de cocina"
-  },
-  {
-    nombre: "Yala",
-    left: "92%",
-    top: "88%",
-    icono: "🦁",
-    actividades: "Safari, elefantes, leopardos"
-  },
-  {
-    nombre: "Sinharaja",
-    left: "60%",
-    top: "65%",
-    icono: "🐒",
-    actividades: "Monos, selva tropical, observación de aves"
-  }
-];
+import React, { useEffect, useRef, useState } from "react";
+import "leaflet/dist/leaflet.css";
+import L from "leaflet";
+import { lugaresCostaSur } from "@/config/costa-sur-data";
+
+// Relación de actividades con iconos
+const iconosActividades: Record<string, string> = {
+  "Avistamiento de ballenas": "🐋",
+  "Avistamiento de ballenas y delfines": "🐋",
+  "Nado con tortugas": "🐢",
+  "Snorkel": "🤿",
+  "Yoga": "🧘‍♂️",
+  "Retiros de yoga": "🧘‍♂️",
+  "Masajes ayurvédicos": "💆",
+  "Tratamientos de belleza": "🧑‍🦰",
+  "Clases de cocina": "🍲",
+  "Clases de cocina tradicional cingalesa": "🍲",
+  "Safari": "🐊",
+  "Safari en Yala": "🐆",
+  "Safari en Udawalawe": "🐘",
+  "Exploración de templos": "🏯",
+  "Templo": "🏯",
+  "Observación de aves": "🦜",
+  "Paseos en barco": "🛥️",
+  "Granja de serpientes": "🐍",
+  "Reserva de Sinharaja": "🐒",
+  "Monos": "🐒",
+  "Senderismo": "🚶",
+  "Trekking": "🥾",
+  "Surf": "🏄‍♂️",
+  "Clases de surf": "🏄‍♂️",
+  "Pesca": "🎣",
+  "Kayak": "🛶",
+  "Meditación": "🧘‍♂️",
+  "Spa": "🧖",
+  "Shopping": "🛍️",
+  "Gastronomía local": "🍲",
+  "Compras locales": "🛍️"
+};
+
+const centerCostaSur: [number, number] = [5.9833, 80.5167]; // Centro aproximado de la Costa Sur
 
 export default function MapaCostaSur() {
-  const [hovered, setHovered] = useState<string | null>(null);
+  const mapContainer = useRef<HTMLDivElement | null>(null);
+  const map = useRef<L.Map | null>(null);
+  const markers = useRef<L.Marker[]>([]);
+  const [lugarSeleccionado, setLugarSeleccionado] = useState(lugaresCostaSur[0]);
+
+  // Navegación por flechas
+  const currentIndex = lugaresCostaSur.findIndex(l => l.id === lugarSeleccionado.id);
+  const prevLugar = () => setLugarSeleccionado(lugaresCostaSur[(currentIndex - 1 + lugaresCostaSur.length) % lugaresCostaSur.length]);
+  const nextLugar = () => setLugarSeleccionado(lugaresCostaSur[(currentIndex + 1) % lugaresCostaSur.length]);
+
+  useEffect(() => {
+    if (typeof window === "undefined" || !mapContainer.current || map.current) return;
+
+    // Configurar iconos por defecto
+    delete (L.Icon.Default.prototype as any)._getIconUrl;
+    L.Icon.Default.mergeOptions({
+      iconRetinaUrl: "/images/map/marker-icon-2x.png",
+      iconUrl: "/images/map/marker-icon.png",
+      shadowUrl: "/images/map/marker-shadow.png",
+    });
+
+    // Inicializar el mapa
+    map.current = L.map(mapContainer.current, {
+      center: centerCostaSur,
+      zoom: 10,
+      minZoom: 9,
+      maxZoom: 13,
+      scrollWheelZoom: true
+    });
+
+    // Añadir capa base
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: "© OpenStreetMap contributors"
+    }).addTo(map.current);
+
+    // Añadir marcadores
+    lugaresCostaSur.forEach((lugar) => {
+      const marker = L.marker([lugar.coordenadas.lat, lugar.coordenadas.lng])
+        .addTo(map.current!);
+      marker.on("click", () => setLugarSeleccionado(lugar));
+      markers.current.push(marker);
+    });
+
+    return () => {
+      if (map.current) {
+        map.current.remove();
+        map.current = null;
+      }
+      markers.current.forEach(marker => marker.remove());
+      markers.current = [];
+    };
+  }, []);
 
   return (
-    <div className="relative w-full max-w-3xl mx-auto mt-8 mb-12">
-      {/* Imagen de fondo */}
-      <img
-        src="/images/mapa-sri-lanka-regiones.jpg"
-        alt="Mapa de regiones de Sri Lanka"
-        className="w-full h-auto rounded-xl shadow-lg"
-        style={{ filter: "grayscale(0.2) brightness(1.1)" }}
-      />
-      {/* Overlay para resaltar la Costa Sur (aproximado) */}
-      <div
-        className="absolute z-10 rounded-b-xl"
-        style={{
-          left: "58%",
-          top: "77%",
-          width: "30%",
-          height: "18%",
-          background: "rgba(46, 125, 50, 0.25)",
-          pointerEvents: "none"
-        }}
-      />
-      {/* Hotspots */}
-      {zonas.map((zona) => (
-        <div
-          key={zona.nombre}
-          className="absolute z-20 flex flex-col items-center group"
-          style={{ left: zona.left, top: zona.top, transform: "translate(-50%, -50%)" }}
-          onMouseEnter={() => setHovered(zona.nombre)}
-          onMouseLeave={() => setHovered(null)}
-        >
-          <button
-            className="w-10 h-10 bg-golden-sand border-4 border-tropical-green rounded-full flex items-center justify-center text-2xl shadow-lg hover:scale-110 transition-transform"
-            aria-label={zona.nombre}
-            tabIndex={0}
-          >
-            {zona.icono}
-          </button>
-          {/* Tooltip */}
-          {hovered === zona.nombre && (
-            <div className="mt-2 px-4 py-2 bg-white border border-tropical-green rounded-xl shadow-xl text-sm text-elephant-gray font-lato text-center max-w-xs animate-fade-in">
-              <div className="font-bold text-tropical-green mb-1">{zona.nombre}</div>
-              <div>{zona.actividades}</div>
+    <div className="flex flex-col md:flex-row gap-8 w-full">
+      {/* Mapa a la izquierda */}
+      <div className="w-full md:w-2/3 h-[400px] md:h-[600px] rounded-lg overflow-hidden shadow-lg">
+        <div ref={mapContainer} className="w-full h-full" />
+      </div>
+      {/* Tarjeta lateral a la derecha */}
+      <div className="w-full md:w-1/3 flex flex-col justify-center items-center">
+        <div className="bg-white rounded-2xl shadow-xl p-6 max-w-md w-full relative">
+          {/* Navegación flechas */}
+          <button onClick={prevLugar} className="absolute left-2 top-1/2 -translate-y-1/2 bg-golden-sand rounded-full p-2 shadow hover:bg-tropical-green hover:text-white transition-colors z-10" aria-label="Anterior">&#8592;</button>
+          <button onClick={nextLugar} className="absolute right-2 top-1/2 -translate-y-1/2 bg-golden-sand rounded-full p-2 shadow hover:bg-tropical-green hover:text-white transition-colors z-10" aria-label="Siguiente">&#8594;</button>
+          {/* Imagen */}
+          {lugarSeleccionado.imagen && (
+            <img src={lugarSeleccionado.imagen} alt={lugarSeleccionado.nombre} className="w-full h-48 object-cover rounded-xl mb-4" />
+          )}
+          {/* Nombre y tipo */}
+          <h2 className="text-2xl font-playfair font-bold text-tropical-green mb-1">{lugarSeleccionado.nombre}</h2>
+          <p className="text-sm text-elephant-gray mb-2 font-semibold">{lugarSeleccionado.tipo}</p>
+          {/* Descripción */}
+          <p className="text-base text-elephant-gray mb-4">{lugarSeleccionado.descripcion}</p>
+          {/* Actividades */}
+          {lugarSeleccionado.actividades && lugarSeleccionado.actividades.length > 0 && (
+            <div className="mb-2">
+              <h3 className="text-lg font-semibold text-tropical-green mb-2">Actividades</h3>
+              <ul className="flex flex-wrap gap-2">
+                {lugarSeleccionado.actividades.map((act, i) => (
+                  <li key={i} className="flex items-center gap-1 bg-golden-sand/40 rounded-full px-3 py-1 text-sm font-lato">
+                    <span className="text-xl">{iconosActividades[act] || ""}</span> {act}
+                  </li>
+                ))}
+              </ul>
             </div>
           )}
         </div>
-      ))}
+      </div>
     </div>
   );
 }
