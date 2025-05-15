@@ -1,6 +1,4 @@
 'use client';
-=======
->>>>>>> d7b0502 (Sustituido mapa antiguo por el nuevo interactivo con Leaflet)
 import React, { useEffect, useRef, useState } from "react";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
