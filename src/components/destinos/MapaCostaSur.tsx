@@ -57,7 +57,6 @@ export default function MapaCostaSur() {
   useEffect(() => {
     let leafletMap: any;
 
-    // Importar Leaflet solo en el cliente
     import("leaflet").then((L) => {
       // Configurar iconos por defecto
       delete (L.Icon.Default.prototype as any)._getIconUrl;
