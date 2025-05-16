@@ -1,8 +1,9 @@
 'use client';
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import "leaflet/dist/leaflet.css";
 import { lugaresCostaSur } from "@/config/costa-sur-data";
 
+// Relación de actividades con iconos
 const iconosActividades: Record<string, string> = {
   "Avistamiento de ballenas": "🐋",
   "Avistamiento de ballenas y delfines": "🐋",
@@ -44,8 +45,9 @@ const iconosActividades: Record<string, string> = {
   "Arquitectura budista": "🛕",
   "Pinturas murales": "🎨",
   "Fotografía de naturaleza": "📷"
-    };
-   const centerCostaSur: [number, number] = [5.9833, 80.5167];
+};
+
+const centerCostaSur: [number, number] = [5.9833, 80.5167];
 
 export default function MapaCostaSur() {
   const mapContainer = useRef<HTMLDivElement | null>(null);
@@ -53,12 +55,10 @@ export default function MapaCostaSur() {
   const markers = useRef<any[]>([]);
 
   useEffect(() => {
-    let L: any;
     let leafletMap: any;
-// Importar Leaflet solo en el cliente
-    import("leaflet").then((leaflet) => {
-      L = leaflet;
 
+    // Importar Leaflet solo en el cliente
+    import("leaflet").then((L) => {
       // Configurar iconos por defecto
       delete (L.Icon.Default.prototype as any)._getIconUrl;
       L.Icon.Default.mergeOptions({
@@ -80,6 +80,7 @@ export default function MapaCostaSur() {
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution: "© OpenStreetMap contributors"
       }).addTo(leafletMap);
+
       // Añadir marcadores
       lugaresCostaSur.forEach((lugar) => {
         const marker = L.marker([lugar.coordenadas.lat, lugar.coordenadas.lng])
@@ -87,6 +88,11 @@ export default function MapaCostaSur() {
             <div>
               <h3>${lugar.nombre}</h3>
               <p>${lugar.descripcion}</p>
+              <div>
+                ${(lugar.actividades || []).map(
+                  act => iconosActividades[act] ? iconosActividades[act] + ' ' + act : act
+                ).join('<br>')}
+              </div>
             </div>
           `)
           .addTo(leafletMap);
@@ -111,4 +117,4 @@ export default function MapaCostaSur() {
       <div ref={mapContainer} className="w-full h-full" />
     </div>
   );
-}
+} 
