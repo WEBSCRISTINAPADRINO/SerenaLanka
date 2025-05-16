@@ -1,3 +1,5 @@
+// SerenaLanka/src/config/costa-sur-data.ts
+
 export interface LugarInteres {
   id: string;
   nombre: string;
@@ -17,7 +19,6 @@ export interface LugarInteres {
 }
 
 export const lugaresCostaSur: LugarInteres[] = [
-  // CIUDADES Y PUEBLOS
   {
     id: 'galle',
     nombre: 'Fuerte de Galle',
@@ -26,7 +27,7 @@ export const lugaresCostaSur: LugarInteres[] = [
     ciudad: 'Galle',
     imagen: '/images/destinos/costa-sur/galle-fort.jpg',
     coordenadas: { lat: 6.0535, lng: 80.2210 },
-    actividades: ['Visita al faro', 'Museo Marítimo', 'Iglesia Holandesa', 'Shopping'],
+    actividades: ['Exploración de templos', 'Shopping', 'Gastronomía local'],
     consejos: ['Visitar al atardecer', 'Recorrer las murallas', 'Explorar las calles coloniales']
   },
   {
@@ -37,10 +38,8 @@ export const lugaresCostaSur: LugarInteres[] = [
     ciudad: 'Matara',
     imagen: '/images/destinos/costa-sur/matara.jpg',
     coordenadas: { lat: 5.9497, lng: 80.5491 },
-    actividades: ['Fuerte holandés', 'Faro', 'Mercado local', 'Playa']
+    actividades: ['Fuerte holandés', 'Playa', 'Mercado local']
   },
-
-  // PLAYAS
   {
     id: 'mirissa',
     nombre: 'Playa de Mirissa',
@@ -60,7 +59,7 @@ export const lugaresCostaSur: LugarInteres[] = [
     ciudad: 'Unawatuna',
     imagen: '/images/destinos/costa-sur/unawatuna.jpg',
     coordenadas: { lat: 6.0167, lng: 80.2500 },
-    actividades: ['Snorkel', 'Buceo', 'Kayak', 'Yoga en la playa']
+    actividades: ['Snorkel', 'Buceo', 'Kayak', 'Yoga']
   },
   {
     id: 'weligama',
@@ -70,7 +69,7 @@ export const lugaresCostaSur: LugarInteres[] = [
     ciudad: 'Weligama',
     imagen: '/images/destinos/costa-sur/weligama.jpg',
     coordenadas: { lat: 5.9667, lng: 80.4167 },
-    actividades: ['Surf', 'Clases de surf', 'Pesca con palangre', 'Paseos en barco']
+    actividades: ['Surf', 'Clases de surf', 'Pesca', 'Paseos en barco']
   },
   {
     id: 'tangalle',
@@ -82,8 +81,6 @@ export const lugaresCostaSur: LugarInteres[] = [
     coordenadas: { lat: 6.0167, lng: 80.7833 },
     actividades: ['Pesca', 'Snorkel', 'Paseos en barco', 'Observación de aves']
   },
-
-  // NATURALEZA Y PARQUES
   {
     id: 'kottawa',
     nombre: 'Reserva Forestal Kottawa',
@@ -104,8 +101,6 @@ export const lugaresCostaSur: LugarInteres[] = [
     coordenadas: { lat: 6.4167, lng: 80.5000 },
     actividades: ['Trekking', 'Observación de aves', 'Fotografía de naturaleza']
   },
-
-  // TEMPLOS Y SITIOS RELIGIOSOS
   {
     id: 'rumassala',
     nombre: 'Templo de Rumassala',
@@ -126,8 +121,6 @@ export const lugaresCostaSur: LugarInteres[] = [
     coordenadas: { lat: 5.9500, lng: 80.5500 },
     actividades: ['Meditación', 'Arquitectura budista', 'Pinturas murales']
   },
-
-  // SPAS Y WELLNESS
   {
     id: 'spa-ayurveda',
     nombre: 'Centro de Ayurveda',
@@ -138,8 +131,6 @@ export const lugaresCostaSur: LugarInteres[] = [
     coordenadas: { lat: 6.0167, lng: 80.2500 },
     actividades: ['Masajes ayurvédicos', 'Tratamientos de belleza', 'Yoga', 'Meditación']
   },
-
-  // ACTIVIDADES Y EXPERIENCIAS
   {
     id: 'whale-watching',
     nombre: 'Avistamiento de Ballenas',
@@ -150,7 +141,8 @@ export const lugaresCostaSur: LugarInteres[] = [
     coordenadas: { lat: 5.9439, lng: 80.4583 },
     mejorEpoca: 'Diciembre a Abril',
     duracion: '4-6 horas',
-    precio: 'Desde 50€'
+    precio: 'Desde 50€',
+    actividades: ['Avistamiento de ballenas', 'Paseos en barco']
   },
   {
     id: 'surf-school',
@@ -160,10 +152,9 @@ export const lugaresCostaSur: LugarInteres[] = [
     ciudad: 'Weligama',
     imagen: '/images/destinos/costa-sur/surf.jpg',
     coordenadas: { lat: 5.9667, lng: 80.4167 },
-    precio: 'Desde 25€/clase'
+    precio: 'Desde 25€/clase',
+    actividades: ['Clases de surf', 'Surf']
   },
-
-  // GASTRONOMÍA
   {
     id: 'fish-market',
     nombre: 'Mercado de Pescado',
@@ -172,10 +163,8 @@ export const lugaresCostaSur: LugarInteres[] = [
     ciudad: 'Galle',
     imagen: '/images/destinos/costa-sur/fish-market.jpg',
     coordenadas: { lat: 6.0535, lng: 80.2210 },
-    actividades: ['Compras locales', 'Fotografía', 'Gastronomía local']
+    actividades: ['Compras locales', 'Gastronomía local']
   },
-
-  // ALOJAMIENTOS DESTACADOS
   {
     id: 'fort-boutique',
     nombre: 'Boutique Hotel en el Fuerte',
@@ -196,4 +185,4 @@ export const lugaresCostaSur: LugarInteres[] = [
     coordenadas: { lat: 6.0167, lng: 80.7833 },
     precio: 'Desde 200€/noche'
   }
-]; 
+];
