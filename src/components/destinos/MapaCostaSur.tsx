@@ -4,45 +4,6 @@ import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import { lugaresCostaSur } from "@/config/costa-sur-data";
 
-// Relación de actividades con iconos
-onst iconosActividades: Record<string, string> = {
-  "Avistamiento de ballenas": "🐋",
-  "Avistamiento de ballenas y delfines": "🐋",
-  "Nado con tortugas": "🐢",
-  "Snorkel": "🤿",
-  "Buceo": "🤿",
-  "Yoga": "🧘‍♂️",
-  "Retiros de yoga": "🧘‍♂️",
-  "Masajes ayurvédicos": "💆‍♀️",
-  "Tratamientos de belleza": "💅",
-  "Clases de cocina": "🍲",
-  "Clases de cocina tradicional cingalesa": "🍲",
-  "Safari": "🐊",
-  "Safari en Yala": "🐆",
-  "Safari en Udawalawe": "🐘",
-  "Exploración de templos": "🏯",
-  "Templo": "🏯",
-  "Observación de aves": "🦜",
-  "Paseos en barco": "🛥️",
-  "Granja de serpientes": "🐍",
-  "Reserva de Sinharaja": "🐒",
-  "Monos": "🐒",
-  "Senderismo": "🥾",
-  "Trekking": "🥾",
-  "Surf": "🏄‍♂️",
-  "Clases de surf": "🏄‍♂️",
-  "Pesca": "🎣",
-  "Kayak": "🛶",
-  "Meditación": "🧘‍♂️",
-  "Spa": "🧖",
-  "Shopping": "🛍️",
-  "Gastronomía local": "🍲",
-  "Compras locales": "🛍️",
-  "Fuerte holandés": "🏰",
-  "Playa": "🏖️",
-const centerCostaSur: [number, number] = [5.9833, 80.5167]; // Centro aproximado de la Costa Sur
-
-// Leyenda de actividades y slugs para URLs
 const iconosActividades: Record<string, string> = {
   "Avistamiento de ballenas": "🐋",
   "Avistamiento de ballenas y delfines": "🐋",
