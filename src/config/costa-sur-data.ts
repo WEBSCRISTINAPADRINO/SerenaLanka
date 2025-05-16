@@ -213,6 +213,5 @@ const iconosActividades: Record<string, string> = {
   "Arquitectura budista": "🛕",
   "Pinturas murales": "🎨",
   "Fotografía de naturaleza": "📷"
-  // Añade más si lo necesitas
 };
 ];
