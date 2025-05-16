@@ -183,5 +183,5 @@ export const lugaresCostaSur: LugarInteres[] = [
     coordenadas: { lat: 6.0167, lng: 80.7833 },
     precio: 'Desde 200€/noche'
   }
-};
+}
 ];
