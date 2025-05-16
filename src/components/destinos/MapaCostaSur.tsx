@@ -117,4 +117,4 @@ export default function MapaCostaSur() {
       <div ref={mapContainer} className="w-full h-full" />
     </div>
   );
-} 
+}
