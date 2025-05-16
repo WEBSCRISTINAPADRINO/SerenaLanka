@@ -185,4 +185,34 @@ export const lugaresCostaSur: LugarInteres[] = [
     coordenadas: { lat: 6.0167, lng: 80.7833 },
     precio: 'Desde 200€/noche'
   }
+const iconosActividades: Record<string, string> = {
+  "Avistamiento de ballenas": "🐋",
+  "Surf": "🏄‍♂️",
+  "Snorkel": "🤿",
+  "Paseos en barco": "🛥️",
+  "Clases de surf": "🏄‍♂️",
+  "Pesca": "🎣",
+  "Observación de aves": "🦜",
+  "Senderismo": "🥾",
+  "Trekking": "🥾",
+  "Shopping": "🛍️",
+  "Gastronomía local": "🍲",
+  "Compras locales": "🛍️",
+  "Yoga": "🧘‍♂️",
+  "Masajes ayurvédicos": "💆‍♀️",
+  "Tratamientos de belleza": "💅",
+  "Meditación": "🧘‍♂️",
+  "Buceo": "🤿",
+  "Kayak": "🛶",
+  "Fuerte holandés": "🏰",
+  "Playa": "🏖️",
+  "Mercado local": "🛒",
+  "Exploración de templos": "🏯",
+  "Jardines medicinales": "🌿",
+  "Vistas panorámicas": "🌅",
+  "Arquitectura budista": "🛕",
+  "Pinturas murales": "🎨",
+  "Fotografía de naturaleza": "📷"
+  // Añade más si lo necesitas
+};
 ];
