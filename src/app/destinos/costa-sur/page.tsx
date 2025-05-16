@@ -1,6 +1,7 @@
 import React from 'react';
 import HeroCostaSur from '@/components/destinos/HeroCostaSur';
-import MapaCostaSur from '../../../components/destinos/MapaCostaSur';
+import dynamic from "next/dynamic";
+const MapaCostaSur = dynamic(() => import('../../../components/destinos/MapaCostaSur'), { ssr: false });
 
 export const metadata = {
   title: 'Costa Sur de Sri Lanka | Serena Lanka',
