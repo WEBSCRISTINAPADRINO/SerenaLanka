@@ -1,17 +1,11 @@
 import React from 'react';
 import HeroCostaSur from '@/components/destinos/HeroCostaSur';
 import dynamic from "next/dynamic";
-const MapaCostaSur = dynamic(() => import('../../../components/destinos/MapaCostaSur'), { ssr: false });
-
-export const metadata = {
-  title: 'Costa Sur de Sri Lanka | Serena Lanka',
-  description: 'Descubre las mejores playas, templos y experiencias en la Costa Sur de Sri Lanka. Desde el histórico Fuerte de Galle hasta las playas paradisíacas de Mirissa.',
-};
+const MapaCostaSur = dynamic(() => import('@/components/destinos/MapaCostaSur'), { ssr: false });
 
 export default function CostaSurPage() {
   return (
-    <div className="space-y-12 max-w-7xl mx-auto">
-      {/* Hero visual */}
+    <div>
       <HeroCostaSur />
       <MapaCostaSur />
 
