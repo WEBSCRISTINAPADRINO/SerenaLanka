@@ -1,3 +1,4 @@
+import { lugaresCostaSur } from "@/config/costa-sur-data";
 'use client';
 import React, { useEffect, useRef, useState } from "react";
 import "leaflet/dist/leaflet.css";
