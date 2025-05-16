@@ -8,7 +8,6 @@ export default function CostaSurPage() {
     <div>
       <HeroCostaSur />
       <MapaCostaSur />
-
       {/* Navegación visual por zonas */}
       <section id="zonas-costa-sur" className="px-6">
         <h2 className="text-2xl font-semibold mb-4 text-tropical-green font-playfair">Explora por zonas</h2>
