@@ -1,5 +1,3 @@
-// SerenaLanka/src/config/costa-sur-data.ts
-
 export interface LugarInteres {
   id: string;
   nombre: string;
