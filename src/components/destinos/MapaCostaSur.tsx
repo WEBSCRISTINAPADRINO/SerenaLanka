@@ -3,7 +3,6 @@ import React, { useEffect, useRef, useState } from "react";
 import "leaflet/dist/leaflet.css";
 import { lugaresCostaSur } from "@/config/costa-sur-data";
 
-// Relación de actividades con iconos
 const iconosActividades: Record<string, string> = {
   "Avistamiento de ballenas": "🐋",
   "Avistamiento de ballenas y delfines": "🐋",
@@ -47,34 +46,7 @@ const iconosActividades: Record<string, string> = {
   "Fotografía de naturaleza": "📷"
 };
 
-const centerCostaSur: [number, number] = [5.9833, 80.5167]; // Centro aproximado de la Costa Sur
-
-// Leyenda de actividades y slugs para URLs
-const leyendaActividades: { nombre: string; icono: string; slug: string }[] = [
-  { nombre: "Avistamiento de ballenas", icono: "🐋", slug: "avistamiento-ballenas" },
-  { nombre: "Nado con tortugas", icono: "🐢", slug: "nado-tortugas" },
-  { nombre: "Snorkel", icono: "🤿", slug: "snorkel" },
-  { nombre: "Yoga", icono: "🧘‍♂️", slug: "yoga" },
-  { nombre: "Masajes ayurvédicos", icono: "💆", slug: "masajes-ayurvedicos" },
-  { nombre: "Tratamientos de belleza", icono: "🧑‍🦰", slug: "tratamientos-belleza" },
-  { nombre: "Clases de cocina", icono: "🍲", slug: "clases-cocina" },
-  { nombre: "Safari", icono: "🐊", slug: "safari" },
-  { nombre: "Safari en Yala", icono: "🐆", slug: "safari-yala" },
-  { nombre: "Safari en Udawalawe", icono: "🐘", slug: "safari-udawalawe" },
-  { nombre: "Exploración de templos", icono: "🏯", slug: "templos" },
-  { nombre: "Observación de aves", icono: "🦜", slug: "observacion-aves" },
-  { nombre: "Paseos en barco", icono: "🛥️", slug: "paseos-barco" },
-  { nombre: "Granja de serpientes", icono: "🐍", slug: "granja-serpientes" },
-  { nombre: "Reserva de Sinharaja", icono: "🐒", slug: "sinharaja" },
-  { nombre: "Senderismo", icono: "🚶", slug: "senderismo" },
-  { nombre: "Trekking", icono: "🥾", slug: "trekking" },
-  { nombre: "Surf", icono: "🏄‍♂️", slug: "surf" },
-  { nombre: "Pesca", icono: "🎣", slug: "pesca" },
-  { nombre: "Kayak", icono: "🛶", slug: "kayak" },
-  { nombre: "Spa", icono: "🧖", slug: "spa" },
-  { nombre: "Shopping", icono: "🛍️", slug: "shopping" },
-  { nombre: "Gastronomía local", icono: "🍲", slug: "gastronomia-local" },
-];
+const centerCostaSur: [number, number] = [5.9833, 80.5167];
 
 export default function MapaCostaSur() {
   const mapContainer = useRef<HTMLDivElement | null>(null);
@@ -118,7 +90,7 @@ export default function MapaCostaSur() {
               <p>${lugar.descripcion}</p>
               <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px;">
                 ${(lugar.actividades || []).map(
-                  act => iconosActividades[act] ? `<span style=\"font-size: 1.5em;\">${iconosActividades[act]}</span> <span>${act}</span>` : `<span>${act}</span>`
+                  act => iconosActividades[act] ? `<span style="font-size: 1.5em;">${iconosActividades[act]}</span> <span>${act}</span>` : `<span>${act}</span>`
                 ).join('<br>')}
               </div>
             </div>
