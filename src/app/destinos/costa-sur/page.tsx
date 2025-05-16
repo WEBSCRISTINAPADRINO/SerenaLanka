@@ -5,7 +5,7 @@ const MapaCostaSur = dynamic(() => import('@/components/destinos/MapaCostaSur'),
 
 export default function CostaSurPage() {
   return (
-    <div>
+    <div className="space-y-12 max-w-7xl mx-auto">
       <HeroCostaSur />
       <MapaCostaSur />
       
