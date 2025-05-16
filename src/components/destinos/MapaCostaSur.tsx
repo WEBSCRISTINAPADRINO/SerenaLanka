@@ -87,9 +87,9 @@ export default function MapaCostaSur() {
             <div>
               <h3>${lugar.nombre}</h3>
               <p>${lugar.descripcion}</p>
-              <div>
+              <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px;">
                 ${(lugar.actividades || []).map(
-                  act => iconosActividades[act] ? iconosActividades[act] + ' ' + act : act
+                  act => iconosActividades[act] ? `<span style="font-size: 1.5em;">${iconosActividades[act]}</span> <span>${act}</span>` : `<span>${act}</span>`
                 ).join('<br>')}
               </div>
             </div>
