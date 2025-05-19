@@ -1,11 +1,15 @@
-export default function DestinosLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+// src/app/layout.tsx
+import './globals.css';
+
+export const metadata = {
+  title: 'Sri Lanka Turismo',
+  description: 'Descubre la magia de Sri Lanka con experiencias únicas.',
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen">
-      {children}
-    </div>
-  )
-} 
+    <html lang="es">
+      <body>{children}</body>
+    </html>
+  );
+}
