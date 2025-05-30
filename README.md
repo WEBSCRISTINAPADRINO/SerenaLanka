@@ -139,4 +139,5 @@ La web implementa una estrategia de monetización basada en:
 - GitHub Actions para CI/CD
 - Despliegue automático a FTP
 - Configuración de .htaccess para SEO
-- Redirecciones y caché optimizados 
+- Redirecciones y caché optimizados
+- 

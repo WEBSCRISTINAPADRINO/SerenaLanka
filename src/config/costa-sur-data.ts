@@ -26,8 +26,7 @@ export const lugaresCostaSur: LugarInteres[] = [
     ciudad: 'Galle',
     imagen: '/images/destinos/costa-sur/galle-fort.jpg',
     coordenadas: { lat: 6.0535, lng: 80.2210 },
-    actividades: ['Visita al faro', 'Museo Marítimo', 'Iglesia Holandesa', 'Shopping'],
-    consejos: ['Visitar al atardecer', 'Recorrer las murallas', 'Explorar las calles coloniales']
+    actividades: ['Exploración de templos', 'Shopping', 'Gastronomía local']
   },
   {
     id: 'matara',
@@ -37,7 +36,7 @@ export const lugaresCostaSur: LugarInteres[] = [
     ciudad: 'Matara',
     imagen: '/images/destinos/costa-sur/matara.jpg',
     coordenadas: { lat: 5.9497, lng: 80.5491 },
-    actividades: ['Fuerte holandés', 'Faro', 'Mercado local', 'Playa']
+    actividades: ['Fuerte holandés', 'Playa', 'Mercado local']
   },
 
   // PLAYAS
@@ -60,7 +59,7 @@ export const lugaresCostaSur: LugarInteres[] = [
     ciudad: 'Unawatuna',
     imagen: '/images/destinos/costa-sur/unawatuna.jpg',
     coordenadas: { lat: 6.0167, lng: 80.2500 },
-    actividades: ['Snorkel', 'Buceo', 'Kayak', 'Yoga en la playa']
+    actividades: ['Snorkel', 'Buceo', 'Kayak', 'Yoga']
   },
   {
     id: 'weligama',
@@ -70,7 +69,7 @@ export const lugaresCostaSur: LugarInteres[] = [
     ciudad: 'Weligama',
     imagen: '/images/destinos/costa-sur/weligama.jpg',
     coordenadas: { lat: 5.9667, lng: 80.4167 },
-    actividades: ['Surf', 'Clases de surf', 'Pesca con palangre', 'Paseos en barco']
+    actividades: ['Surf', 'Clases de surf', 'Pesca', 'Paseos en barco']
   },
   {
     id: 'tangalle',
@@ -139,30 +138,6 @@ export const lugaresCostaSur: LugarInteres[] = [
     actividades: ['Masajes ayurvédicos', 'Tratamientos de belleza', 'Yoga', 'Meditación']
   },
 
-  // ACTIVIDADES Y EXPERIENCIAS
-  {
-    id: 'whale-watching',
-    nombre: 'Avistamiento de Ballenas',
-    descripcion: 'Excursión para ver ballenas azules y delfines en su hábitat natural.',
-    tipo: 'Actividad',
-    ciudad: 'Mirissa',
-    imagen: '/images/destinos/costa-sur/whale-watching.jpg',
-    coordenadas: { lat: 5.9439, lng: 80.4583 },
-    mejorEpoca: 'Diciembre a Abril',
-    duracion: '4-6 horas',
-    precio: 'Desde 50€'
-  },
-  {
-    id: 'surf-school',
-    nombre: 'Escuela de Surf',
-    descripcion: 'Clases de surf para todos los niveles en las mejores playas de la costa.',
-    tipo: 'Actividad',
-    ciudad: 'Weligama',
-    imagen: '/images/destinos/costa-sur/surf.jpg',
-    coordenadas: { lat: 5.9667, lng: 80.4167 },
-    precio: 'Desde 25€/clase'
-  },
-
   // GASTRONOMÍA
   {
     id: 'fish-market',
@@ -172,28 +147,6 @@ export const lugaresCostaSur: LugarInteres[] = [
     ciudad: 'Galle',
     imagen: '/images/destinos/costa-sur/fish-market.jpg',
     coordenadas: { lat: 6.0535, lng: 80.2210 },
-    actividades: ['Compras locales', 'Fotografía', 'Gastronomía local']
-  },
-
-  // ALOJAMIENTOS DESTACADOS
-  {
-    id: 'fort-boutique',
-    nombre: 'Boutique Hotel en el Fuerte',
-    descripcion: 'Hotel boutique en edificio colonial restaurado dentro del Fuerte de Galle.',
-    tipo: 'Alojamiento',
-    ciudad: 'Galle',
-    imagen: '/images/destinos/costa-sur/boutique-hotel.jpg',
-    coordenadas: { lat: 6.0535, lng: 80.2210 },
-    precio: 'Desde 150€/noche'
-  },
-  {
-    id: 'beach-resort',
-    nombre: 'Resort de Playa',
-    descripcion: 'Resort de lujo con vistas al océano y spa.',
-    tipo: 'Alojamiento',
-    ciudad: 'Tangalle',
-    imagen: '/images/destinos/costa-sur/beach-resort.jpg',
-    coordenadas: { lat: 6.0167, lng: 80.7833 },
-    precio: 'Desde 200€/noche'
+    actividades: ['Compras locales', 'Gastronomía local']
   }
-]; 
+];

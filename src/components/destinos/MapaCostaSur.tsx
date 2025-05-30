@@ -10,10 +10,18 @@ const iconosActividades: Record<string, string> = {
   "Avistamiento de ballenas y delfines": "🐋",
   "Nado con tortugas": "🐢",
   "Snorkel": "🤿",
+<<<<<<< HEAD
   "Yoga": "🧘‍♂️",
   "Retiros de yoga": "🧘‍♂️",
   "Masajes ayurvédicos": "💆",
   "Tratamientos de belleza": "🧑‍🦰",
+=======
+  "Buceo": "🤿",
+  "Yoga": "🧘‍♂️",
+  "Retiros de yoga": "🧘‍♂️",
+  "Masajes ayurvédicos": "💆‍♀️",
+  "Tratamientos de belleza": "💅",
+>>>>>>> a5f6235
   "Clases de cocina": "🍲",
   "Clases de cocina tradicional cingalesa": "🍲",
   "Safari": "🐊",
@@ -26,7 +34,11 @@ const iconosActividades: Record<string, string> = {
   "Granja de serpientes": "🐍",
   "Reserva de Sinharaja": "🐒",
   "Monos": "🐒",
+<<<<<<< HEAD
   "Senderismo": "🚶",
+=======
+  "Senderismo": "🥾",
+>>>>>>> a5f6235
   "Trekking": "🥾",
   "Surf": "🏄‍♂️",
   "Clases de surf": "🏄‍♂️",
@@ -36,7 +48,19 @@ const iconosActividades: Record<string, string> = {
   "Spa": "🧖",
   "Shopping": "🛍️",
   "Gastronomía local": "🍲",
+<<<<<<< HEAD
   "Compras locales": "🛍️"
+=======
+  "Compras locales": "🛍️",
+  "Fuerte holandés": "🏰",
+  "Playa": "🏖️",
+  "Mercado local": "🛒",
+  "Jardines medicinales": "🌿",
+  "Vistas panorámicas": "🌅",
+  "Arquitectura budista": "🛕",
+  "Pinturas murales": "🎨",
+  "Fotografía de naturaleza": "📷"
+>>>>>>> a5f6235
 };
 
 const centerCostaSur: [number, number] = [5.9833, 80.5167]; // Centro aproximado de la Costa Sur
@@ -47,8 +71,13 @@ const leyendaActividades: { nombre: string; icono: string; slug: string }[] = [
   { nombre: "Nado con tortugas", icono: "🐢", slug: "nado-tortugas" },
   { nombre: "Snorkel", icono: "🤿", slug: "snorkel" },
   { nombre: "Yoga", icono: "🧘‍♂️", slug: "yoga" },
+<<<<<<< HEAD
   { nombre: "Masajes ayurvédicos", icono: "💆", slug: "masajes-ayurvedicos" },
   { nombre: "Tratamientos de belleza", icono: "🧑‍🦰", slug: "tratamientos-belleza" },
+=======
+  { nombre: "Masajes ayurvédicos", icono: "💆‍♀️", slug: "masajes-ayurvedicos" },
+  { nombre: "Tratamientos de belleza", icono: "💅", slug: "tratamientos-belleza" },
+>>>>>>> a5f6235
   { nombre: "Clases de cocina", icono: "🍲", slug: "clases-cocina" },
   { nombre: "Safari", icono: "🐊", slug: "safari" },
   { nombre: "Safari en Yala", icono: "🐆", slug: "safari-yala" },
@@ -58,7 +87,11 @@ const leyendaActividades: { nombre: string; icono: string; slug: string }[] = [
   { nombre: "Paseos en barco", icono: "🛥️", slug: "paseos-barco" },
   { nombre: "Granja de serpientes", icono: "🐍", slug: "granja-serpientes" },
   { nombre: "Reserva de Sinharaja", icono: "🐒", slug: "sinharaja" },
+<<<<<<< HEAD
   { nombre: "Senderismo", icono: "🚶", slug: "senderismo" },
+=======
+  { nombre: "Senderismo", icono: "🥾", slug: "senderismo" },
+>>>>>>> a5f6235
   { nombre: "Trekking", icono: "🥾", slug: "trekking" },
   { nombre: "Surf", icono: "🏄‍♂️", slug: "surf" },
   { nombre: "Pesca", icono: "🎣", slug: "pesca" },
@@ -116,6 +149,7 @@ export default function MapaCostaSur() {
             ${iconos.map(icono => `<span class="text-xl">${icono}</span>`).join(" ")}
           </div>
           <p class="text-sm text-elephant-gray mb-1">${lugar.descripcion}</p>
+<<<<<<< HEAD
           ${actividades.length > 0 ? `<ul class="list-disc pl-4 text-sm text-elephant-gray">${actividades.map(act => `<li>${iconosActividades[act] ? iconosActividades[act] + ' ' : ''}${act}</li>`).join('')}</ul>` : ''}
         </div>
       `;
@@ -125,6 +159,15 @@ export default function MapaCostaSur() {
           className: "custom-popup"
         })
         .addTo(map.current!);
+=======
+        </div>
+      `;
+
+      const marker = L.marker([lugar.coordenadas.lat, lugar.coordenadas.lng])
+        .bindPopup(popupHtml)
+        .addTo(map.current!);
+
+>>>>>>> a5f6235
       marker.on("click", () => setLugarSeleccionado(lugar));
       markers.current.push(marker);
     });
@@ -134,12 +177,16 @@ export default function MapaCostaSur() {
         map.current.remove();
         map.current = null;
       }
+<<<<<<< HEAD
       markers.current.forEach(marker => marker.remove());
       markers.current = [];
+=======
+>>>>>>> a5f6235
     };
   }, []);
 
   return (
+<<<<<<< HEAD
     <div className="flex flex-col md:flex-row gap-8 w-full">
       {/* Mapa a la izquierda */}
       <div className="w-full md:w-2/3 h-[400px] md:h-[600px] rounded-lg overflow-hidden shadow-lg">
@@ -173,6 +220,28 @@ export default function MapaCostaSur() {
               </ul>
             </div>
           )}
+=======
+    <div className="relative w-full h-[500px] rounded-lg overflow-hidden shadow-lg">
+      <div ref={mapContainer} className="w-full h-full" />
+      <div className="absolute bottom-4 left-4 right-4 bg-white p-4 rounded-lg shadow-lg">
+        <div className="flex justify-between items-center">
+          <button
+            onClick={prevLugar}
+            className="p-2 rounded-full bg-tropical-green text-white hover:bg-opacity-90"
+          >
+            ←
+          </button>
+          <div className="text-center">
+            <h3 className="font-bold text-tropical-green">{lugarSeleccionado.nombre}</h3>
+            <p className="text-sm text-elephant-gray">{lugarSeleccionado.tipo}</p>
+          </div>
+          <button
+            onClick={nextLugar}
+            className="p-2 rounded-full bg-tropical-green text-white hover:bg-opacity-90"
+          >
+            →
+          </button>
+>>>>>>> a5f6235
         </div>
       </div>
     </div>
